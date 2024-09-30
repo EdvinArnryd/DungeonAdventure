@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Room : MonoBehaviour
+public class Room
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string roomName;
+    public string description;
 
-    // Update is called once per frame
-    void Update()
+    public Room(string roomName, string description)
     {
-        
+        this.roomName = roomName;
+        this.description = description;
     }
 }
