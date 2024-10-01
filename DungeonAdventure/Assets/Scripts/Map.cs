@@ -11,7 +11,7 @@ public class Map
     private Room cave;
     public Room[,] map;
 
-    void Start()
+    public void Initialize()
     {
         // Initialize each Room object
         corridor = new Room("Corridor", "What a lovely Corridor!");

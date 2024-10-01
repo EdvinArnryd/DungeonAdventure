@@ -9,25 +9,19 @@ public class Player : MonoBehaviour
     private int DMG;
     private List<Item> inventory;
     private HeroClass heroClass;
-    private int row, col;
-    private Map map;
-    private Room playerRoom;
-    void Start()
+    public int row, col;
+    public void Initialize()
     {
         maxHP = 25;
         HP = maxHP;
         inventory = new List<Item>(5);
         row = 0;
         col = 0;
-        playerRoom = new Room("My", "Room");
     }
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log(map.map[row, col].roomName);
-        }
+        
     }
     
     // Todo:
