@@ -10,6 +10,8 @@ public class Map
     private Room hall;
     private Room cave;
     public Room[,] map;
+    public int maxHeight;
+    public int maxWidth;
 
     public void Initialize()
     {
@@ -23,6 +25,9 @@ public class Map
             {corridor, barracks},
             {hall, cave}
         };
+
+        maxHeight = map.GetLength(0);
+        maxWidth = map.GetLength(1);
     }
 
 }

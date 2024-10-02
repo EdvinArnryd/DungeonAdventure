@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player
 {
     private int HP;
     private int maxHP;
@@ -15,8 +15,8 @@ public class Player : MonoBehaviour
         maxHP = 25;
         HP = maxHP;
         inventory = new List<Item>(5);
-        row = 0;
-        col = 0;
+        row = 1;
+        col = 1;
     }
     
     void Update()
