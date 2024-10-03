@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,9 @@ public class GameManager : MonoBehaviour
     public Button southBtn;
     public Button eastBtn;
     public Button westBtn;
+    public TextMeshProUGUI walkingDirectionTxt;
+    public TextMeshProUGUI displayRoomTxt;
+    public TextMeshProUGUI displayRoomDescTxt;
 
     void Start()
     {
@@ -18,77 +22,82 @@ public class GameManager : MonoBehaviour
         map.Initialize();
         player = new Player();
         player.Initialize();
-        row = 1;
-        col = 1;
+        row = 0;
+        col = 0;
+        
+        UpdateRoomDisplay();
     }
 
     void Update()
     {
         //Debug.Log(map.map[player.row, player.col].description);
     }
+
+    void UpdateRoomDisplay()
+    {
+        displayRoomTxt.SetText(map.map[col, row].roomName);
+        displayRoomDescTxt.SetText(map.map[col, row].description);
+    }
     
 
     public void walkNorth()
     {
-        if (col <= 1)
+        if (col <= 0)
         {
-            col = 1;
-            Debug.Log(col);
-            Debug.Log("Can't walk here");
+            col = 0;
+            walkingDirectionTxt.SetText("Can't walk here");
         }
         else
         {
             col--;
-            Debug.Log(col);
-            Debug.Log("You walked north");
+            walkingDirectionTxt.SetText("You walked north");
+            UpdateRoomDisplay();
         }
+        
     }
     
     public void walkSouth()
     {
-        if (col >= map.maxHeight)
+        if (col >= map.maxHeight -1)
         {
-            col = map.maxHeight;
-            Debug.Log(col);
-            Debug.Log("Can't walk here");
+            col = map.maxHeight -1;
+            walkingDirectionTxt.SetText("Can't walk here");
         }
         else
         {
             col++;
-            Debug.Log(col);
-            Debug.Log("You walked south");
+            walkingDirectionTxt.SetText("You walked south");
+            UpdateRoomDisplay();
         }
     }
     
     public void walkEast()
     {
-        if (row >= map.maxWidth)
+        if (row >= map.maxWidth -1)
         {
-            row = map.maxWidth;
-            Debug.Log("row" + row);
-            Debug.Log("Can't walk here");
+            row = map.maxWidth -1;
+            walkingDirectionTxt.SetText("Can't walk here");
         }
         else
         {
             row++;
-            Debug.Log("row" + row);
-            Debug.Log("You walked east");
+            walkingDirectionTxt.SetText("You walked east");
+            UpdateRoomDisplay();
         }
     }
     
     public void walkWest()
     {
-        if (row <= 1)
+        if (row <= 0)
         {
-            row = 1;
-            Debug.Log("row" + row);
-            Debug.Log("Can't walk here");
+            row = 0;
+            walkingDirectionTxt.SetText("Can't walk here");
         }
         else
         {
             row--;
-            Debug.Log("row" + row);
-            Debug.Log("You walked west");
+            walkingDirectionTxt.SetText("You walked west");
+            UpdateRoomDisplay();
         }
     }
 
