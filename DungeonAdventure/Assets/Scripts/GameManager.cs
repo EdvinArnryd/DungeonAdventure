@@ -7,13 +7,10 @@ public class GameManager : MonoBehaviour
     public Player player;  // Assign the Player object via Inspector
     private Map map;       // Local instance of the Map
     private int row, col;  // Player's current position on the map
-    public Button northBtn;
-    public Button southBtn;
-    public Button eastBtn;
-    public Button westBtn;
     public TextMeshProUGUI walkingDirectionTxt;
     public TextMeshProUGUI displayRoomTxt;
     public TextMeshProUGUI displayRoomDescTxt;
+    private int randomValue;
 
     void Start()
     {
@@ -35,6 +32,7 @@ public class GameManager : MonoBehaviour
 
     void UpdateRoomDisplay()
     {
+        TriggerCombat();
         displayRoomTxt.SetText(map.map[col, row].roomName);
         displayRoomDescTxt.SetText(map.map[col, row].description);
     }
@@ -98,6 +96,16 @@ public class GameManager : MonoBehaviour
             row--;
             walkingDirectionTxt.SetText("You walked west");
             UpdateRoomDisplay();
+        }
+    }
+
+    private void TriggerCombat()
+    {
+        randomValue = Random.Range(1, 5);
+        if (randomValue == 4)
+        {
+            // Load Combat scene
+            // Add a random enemy? Or make a function that uses the Room's level? And put an enemy with the similar level in the combat.
         }
     }
 
