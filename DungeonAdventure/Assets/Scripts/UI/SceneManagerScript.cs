@@ -8,4 +8,9 @@ public class SceneManagerScript : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+
+    public void LoadCombatScene()
+    {
+        SceneManager.LoadScene("Combat");
+    }
 }
