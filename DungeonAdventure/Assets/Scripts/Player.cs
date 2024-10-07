@@ -9,6 +9,7 @@ public class Player
     private int DMG;
     private List<Item> inventory;
     private HeroClass heroClass;
+    private string name;
     public int row, col;
     public void Initialize()
     {
@@ -17,11 +18,17 @@ public class Player
         inventory = new List<Item>(5);
         row = 1;
         col = 1;
+        name = "Player";
+    }
+
+    public int GetDMG()
+    {
+        return DMG;
     }
     
-    void Update()
+    public int GetHP()
     {
-        
+        return HP;
     }
     
     // Todo:
