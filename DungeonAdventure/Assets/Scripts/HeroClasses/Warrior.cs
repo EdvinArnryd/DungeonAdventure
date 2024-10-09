@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Warrior : HeroClass
 {
-    void Start()
+    public Warrior()
     {
         strength = 10;
         agility = 7;

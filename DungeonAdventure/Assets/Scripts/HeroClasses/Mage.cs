@@ -5,7 +5,7 @@ using UnityEngine;
 public class Mage : HeroClass
 {
     // Start is called before the first frame update
-    void Start()
+    public Mage()
     {
         strength = 2;
         agility = 4;

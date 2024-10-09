@@ -5,7 +5,7 @@ using UnityEngine;
 public class Rogue : HeroClass
 {
     // Start is called before the first frame update
-    void Start()
+    public Rogue()
     {
         strength = 6;
         agility = 10;

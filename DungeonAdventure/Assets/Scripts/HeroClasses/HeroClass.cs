@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeroClass : MonoBehaviour
+public class HeroClass
 {
     // This class will only give access to different variables that children will use
     // to change their values.

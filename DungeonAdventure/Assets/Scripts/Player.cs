@@ -8,8 +8,8 @@ public class Player
     private int maxHP;
     private int DMG;
     private List<Item> inventory;
-    private HeroClass heroClass;
-    private string name;
+    public HeroClass heroClass;
+    public string name;
     public int row, col;
     public void Initialize()
     {
