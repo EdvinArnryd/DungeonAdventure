@@ -2,18 +2,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CharacterCreation : MonoBehaviour
 {
-    private Player player;
+    public PlayerData player;
     public Button continueButton;
     public TMP_InputField inputField;
 
     public void Start()
     {
-        player = new Player();
+        player.ResetData();
     }
 
     public void Update()
@@ -30,26 +32,28 @@ public class CharacterCreation : MonoBehaviour
 
     public void ChooseWarriorClass()
     {
-        player.heroClass = new Warrior();
+        player.SetHeroClass(new Warrior());
         Debug.Log(player.heroClass.className);
     }
     
     public void ChooseMageClass()
     {
-        player.heroClass = new Mage();
+        player.SetHeroClass(new Mage());
         Debug.Log(player.heroClass.className);
     }
     
     public void ChooseRogueClass()
     {
-        player.heroClass = new Rogue();
+        player.SetHeroClass(new Rogue());
         Debug.Log(player.heroClass.className);
     }
 
     public void ContinueButton()
     {
-        player.name = inputField.text;
-        Debug.Log(player.name);
+        player.Initialize();
+        player.SetName(inputField.text);
+        Debug.Log(player.GetName());
+        SceneManager.LoadScene("MainGame");
     }
     
 }

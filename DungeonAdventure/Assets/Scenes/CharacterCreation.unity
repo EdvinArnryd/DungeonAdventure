@@ -1038,6 +1038,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bddcd2416df4ac4479e27d4ad4cc45d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 11400000, guid: dc353e68cb3ffea478bad081283fb45a, type: 2}
   continueButton: {fileID: 1536845025}
   inputField: {fileID: 318971921}
 --- !u!1 &863885040
