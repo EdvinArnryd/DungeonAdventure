@@ -1085,6 +1085,7 @@ MonoBehaviour:
   enemyName: {fileID: 1218621517}
   enemyHealth: {fileID: 241919039}
   actionField: {fileID: 1797580024}
+  player: {fileID: 11400000, guid: dc353e68cb3ffea478bad081283fb45a, type: 2}
 --- !u!1 &1218621515
 GameObject:
   m_ObjectHideFlags: 0

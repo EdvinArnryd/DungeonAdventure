@@ -22,7 +22,8 @@ public class GameManager : MonoBehaviour
         row = 0;
         col = 0;
         
-        UpdateRoomDisplay();
+        displayRoomTxt.SetText(map.map[col, row].roomName);
+        displayRoomDescTxt.SetText(map.map[col, row].description);
     }
 
     void Update()
@@ -35,7 +36,6 @@ public class GameManager : MonoBehaviour
         TriggerCombat();
         displayRoomTxt.SetText(map.map[col, row].roomName);
         displayRoomDescTxt.SetText(map.map[col, row].description);
-        Debug.Log(player.GetName());
     }
     
 
