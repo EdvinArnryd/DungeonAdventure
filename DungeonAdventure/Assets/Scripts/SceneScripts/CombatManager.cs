@@ -3,12 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-
-//TODO:
-//Create scriptable object for each enemy.
-//Then Create a list of enemies(scriptableobjects) as a public variable
-//Then add all of the enemies into the list in the editor.
-//This way we don't need to write as much code as we did now and it's a scalable solution.
 public class CombatManager : MonoBehaviour
 {
     public TextMeshProUGUI playerName;
@@ -51,18 +45,29 @@ public class CombatManager : MonoBehaviour
         enemyHealth.SetText(currentEnemy.HP.ToString());
     }  
 
-    private void Attack()
+    public void Attack()
     {
-        
+        actionField.SetText("Player attacked!");
     }
 
-    private void ThrowSpell()
+    public void ThrowSpell()
     {
-        
+        actionField.SetText("Player used their spell!");
     }
 
-    private void Heal()
+    public void Heal()
     {
-        
+        StartCoroutine(HealCoroutine());
+    }
+
+    private IEnumerator HealCoroutine()
+    {
+        actionField.SetText("Player healed!");
+        yield return new WaitForSeconds(2f); // Method, delegate, or event is expected
+        int addedHealth = 3;
+        player.healPlayer(addedHealth);
+        actionField.SetText("Player healed " + addedHealth + " HP!");
+        yield return new WaitForSeconds(2f);
+        actionField.SetText("Yay!");
     }
 }

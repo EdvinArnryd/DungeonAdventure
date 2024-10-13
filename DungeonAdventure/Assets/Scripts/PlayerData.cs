@@ -33,6 +33,15 @@ public class PlayerData : ScriptableObject
         return HP;
     }
 
+    public void healPlayer(int addedHealth)
+    {
+        HP += addedHealth;
+        if (HP > maxHP)
+        {
+            HP = maxHP;
+        }
+    }
+
     public string GetName()
     {
         return playerName;
