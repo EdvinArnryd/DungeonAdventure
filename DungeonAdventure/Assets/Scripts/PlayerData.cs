@@ -42,6 +42,11 @@ public class PlayerData : ScriptableObject
         }
     }
 
+    public void playerTakeDamage(int damage)
+    {
+        HP -= damage;
+    }
+
     public string GetName()
     {
         return playerName;

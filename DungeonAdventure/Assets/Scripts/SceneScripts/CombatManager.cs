@@ -47,46 +47,49 @@ public class CombatManager : MonoBehaviour
         randomValue = Random.Range(0, enemies.Count-1);
         currentEnemy = enemies[randomValue];
         
-        // Set Player and Enemy's Name's and health to UI
-        playerName.SetText(player.GetName());
-        playerHealth.SetText(player.GetHP().ToString());
-        
         enemyName.SetText(currentEnemy.type);
+        playerName.SetText(player.GetName());
+        UpdateUI();
+    }
+
+    public void UpdateUI()
+    {
+        // Set Player and Enemy's Name's and health to UI
+        playerHealth.SetText(player.GetHP().ToString());
         enemyHealth.SetText(currentEnemy.HP.ToString());
-    }  
+    }
 
     public void Attack()
     {
         DisableButtons();
         StartCoroutine(AttackCoroutine());
+        EnemyAction();
     }
 
     private IEnumerator AttackCoroutine()
     {
         actionField.SetText("Player attacked!");
         yield return new WaitForSeconds(2f);
-        
-        WaitingForPlayer();
     }
 
     public void ThrowSpell()
     {
         DisableButtons();
         StartCoroutine(ThrowSpellCoroutine());
+        EnemyAction();
     }
 
     private IEnumerator ThrowSpellCoroutine()
     {
         actionField.SetText("Player used their spell!");
         yield return new WaitForSeconds(2f);
-        
-        WaitingForPlayer();
     }
 
     public void Heal()
     {
         DisableButtons();
         StartCoroutine(HealCoroutine());
+        EnemyAction();
     }
 
     private IEnumerator HealCoroutine()
@@ -97,7 +100,6 @@ public class CombatManager : MonoBehaviour
         player.healPlayer(addedHealth);
         actionField.SetText("Player healed " + addedHealth + " HP!");
         yield return new WaitForSeconds(2f);
-        WaitingForPlayer();
     }
 
     private void WaitingForPlayer()
@@ -113,5 +115,63 @@ public class CombatManager : MonoBehaviour
         AttackButton.interactable = false;
         SpellButton.interactable = false;
         HealButton.interactable = false;
+    }
+
+    private void EnemyAction()
+    {
+        int random = Random.Range(1, 7);
+        if (random == 6)
+        {
+            StartCoroutine(EnemyHealCoroutine());
+        }
+        else
+        {
+            StartCoroutine(EnemyAttackCoroutine());
+        }
+    }
+
+    private IEnumerator EnemyAttackCoroutine()
+    {
+        yield return new WaitForSeconds(2f);
+        actionField.SetText("Enemy is going for an attack!");
+        yield return new WaitForSeconds(2f);
+        int randomValue = Random.Range(1, 7);
+        if (randomValue == 6)
+        {
+            // CRIT
+            actionField.SetText("Enemy got a lucky hit!");
+            yield return new WaitForSeconds(2f);
+            player.playerTakeDamage(currentEnemy.DMG * 2);
+            UpdateUI();
+            actionField.SetText("You lost " + currentEnemy.DMG * 2 + " health points.");
+        }
+        else if (randomValue == 5)
+        {
+            // MISS
+            actionField.SetText("Enemy missed!");
+        }
+        else
+        {
+            // NORMAL ATTACK
+            player.playerTakeDamage(currentEnemy.DMG);
+            UpdateUI();
+            actionField.SetText("You lost " + currentEnemy.DMG + " health points.");
+        }
+        
+        yield return new WaitForSeconds(2f);
+        WaitingForPlayer();
+    }
+    
+    private IEnumerator EnemyHealCoroutine()
+    {
+        yield return new WaitForSeconds(2f);
+        actionField.SetText("Enemy's turn!");
+        yield return new WaitForSeconds(2f);
+        currentEnemy.healEnemy(3);
+        UpdateUI();
+        actionField.SetText("Enemy healed themselves!");
+        
+        WaitingForPlayer();
+        yield return new WaitForSeconds(2f);
     }
 }

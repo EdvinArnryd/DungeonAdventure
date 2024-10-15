@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class Enemy
@@ -8,6 +9,18 @@ public class Enemy
     public string type;
     public int DMG;
     public int HP;
+    public int maxHP;
     public int XP;
+    
+    public void healEnemy(int addedHealth)
+    {
+        HP += addedHealth;
+        if (HP > maxHP)
+        {
+            HP = maxHP;
+        }
+    }
 
 }
+
+

@@ -9,7 +9,8 @@ public class Skeleton : Enemy
     {
         type = "Skeleton";
         DMG = 2;
-        HP = 10;
+        maxHP = 10;
+        HP = maxHP;
         XP = 8;
     }
 

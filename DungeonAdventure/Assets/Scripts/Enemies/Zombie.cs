@@ -9,7 +9,8 @@ public class Zombie : Enemy
     {
         type = "Zombie";
         DMG = 3;
-        HP = 12;
+        maxHP = 12;
+        HP = maxHP;
         XP = 10;
     }
 

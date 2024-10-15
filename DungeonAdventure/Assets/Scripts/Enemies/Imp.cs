@@ -9,7 +9,8 @@ public class Imp : Enemy
     {
         type = "Imp";
         DMG = 1;
-        HP = 6;
+        maxHP = 6;
+        HP = maxHP;
         XP = 5;
     }
 
