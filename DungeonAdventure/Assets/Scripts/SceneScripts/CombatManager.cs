@@ -4,6 +4,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+// TODO
+// Big issue with null ref from heroClass
+// Because we never initialize it
+// Maybe we can do that inside of PlayerData?
 public class CombatManager : MonoBehaviour
 {
     [Header("Initialize UI")]
@@ -68,8 +72,27 @@ public class CombatManager : MonoBehaviour
 
     private IEnumerator AttackCoroutine()
     {
-        actionField.SetText("Player attacked!");
+        actionField.SetText(player.GetName() + " attacked!");
         yield return new WaitForSeconds(2f);
+        randomValue = Random.Range(1, 7);
+        if (randomValue == 6)
+        {
+            // Crit
+            actionField.SetText(player.GetName() + " got a lucky crit!");
+            yield return new WaitForSeconds(2f);
+            currentEnemy.enemyTakeDamage(player.GetDMG());
+            UpdateUI();
+            actionField.SetText(currentEnemy.type + " took " + player.GetDMG() + " damage.");
+            yield return new WaitForSeconds(2f);
+        }
+        else
+        {
+            // Attack
+            currentEnemy.enemyTakeDamage(player.GetDMG());
+            UpdateUI();
+            actionField.SetText(currentEnemy.type + " took " + player.GetDMG() + " damage.");
+            yield return new WaitForSeconds(2f);
+        }
     }
 
     public void ThrowSpell()
@@ -81,8 +104,22 @@ public class CombatManager : MonoBehaviour
 
     private IEnumerator ThrowSpellCoroutine()
     {
-        actionField.SetText("Player used their spell!");
+        actionField.SetText(player.GetName() + " used their spell!");
         yield return new WaitForSeconds(2f);
+        int spellDamage = player.heroClass.UseSpell(player.heroClass.intelligence, player.GetMana());
+        if (spellDamage == 0)
+        {
+            actionField.SetText(player.GetName() + " Could not use their spell!");
+            yield return new WaitForSeconds(2f);
+        }
+        else
+        {
+            player.UsedSpell();
+            currentEnemy.enemyTakeDamage(spellDamage);
+            UpdateUI();
+            actionField.SetText(currentEnemy.type + " took " + spellDamage + " damage.");
+            yield return new WaitForSeconds(2f);
+        }
     }
 
     public void Heal()

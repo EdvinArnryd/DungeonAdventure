@@ -11,4 +11,16 @@ public class HeroClass
     public int intelligence;
     public string className;
     public string description;
+
+    public int UseSpell(int heroIntelligence, int mana)
+    {
+        int spellDamage = 0;
+        if (heroIntelligence >= 12 & mana >= 3)
+        {
+            spellDamage = 6 + heroIntelligence / 2;
+            return spellDamage;
+        }
+
+        return spellDamage;
+    }
 }

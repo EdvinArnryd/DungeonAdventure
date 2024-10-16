@@ -7,12 +7,14 @@ public class PlayerData : ScriptableObject
     private int HP;
     private int maxHP;
     private int DMG;
+    private int Mana;
     private List<Item> inventory;
     public HeroClass heroClass;
     private string playerName;
     // private int row, col;
     public void Initialize()
     {
+        Mana = 15;
         maxHP = 25;
         HP = maxHP;
         DMG = 10;
@@ -23,6 +25,14 @@ public class PlayerData : ScriptableObject
         // col = 1;
     }
 
+    public void UsedSpell()
+    {
+        Mana -= 3;
+    }
+    public int GetMana()
+    {
+        return Mana;
+    }
     public int GetDMG()
     {
         return DMG;

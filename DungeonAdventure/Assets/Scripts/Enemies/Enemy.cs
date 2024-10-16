@@ -20,6 +20,11 @@ public class Enemy
             HP = maxHP;
         }
     }
+    
+    public void enemyTakeDamage(int damage)
+    {
+        HP -= damage;
+    }
 
 }
 
