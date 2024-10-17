@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviour
         
         displayRoomTxt.SetText(map.map[col, row].roomName);
         displayRoomDescTxt.SetText(map.map[col, row].description);
+
+        Debug.Log(player.heroClass.className);
+        Debug.Log(player.GetName() + " This is the name in GameManager");
     }
 
     void Update()

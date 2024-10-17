@@ -52,7 +52,6 @@ public class CharacterCreation : MonoBehaviour
     {
         player.Initialize();
         player.SetName(inputField.text);
-        Debug.Log(player.GetName());
         SceneManager.LoadScene("MainGame");
     }
     
