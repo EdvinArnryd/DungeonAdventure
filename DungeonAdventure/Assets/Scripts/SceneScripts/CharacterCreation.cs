@@ -50,7 +50,6 @@ public class CharacterCreation : MonoBehaviour
 
     public void ContinueButton()
     {
-        player.Initialize();
         player.SetName(inputField.text);
         SceneManager.LoadScene("MainGame");
     }

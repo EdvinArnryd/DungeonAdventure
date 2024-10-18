@@ -24,14 +24,6 @@ public class GameManager : MonoBehaviour
         
         displayRoomTxt.SetText(map.map[col, row].roomName);
         displayRoomDescTxt.SetText(map.map[col, row].description);
-
-        Debug.Log(player.heroClass.className);
-        Debug.Log(player.GetName() + " This is the name in GameManager");
-    }
-
-    void Update()
-    {
-        //Debug.Log(map.map[player.row, player.col].description);
     }
 
     void UpdateRoomDisplay()
@@ -41,7 +33,6 @@ public class GameManager : MonoBehaviour
         displayRoomDescTxt.SetText(map.map[col, row].description);
     }
     
-
     public void walkNorth()
     {
         if (col <= 0)
@@ -55,7 +46,6 @@ public class GameManager : MonoBehaviour
             walkingDirectionTxt.SetText("You walked north");
             UpdateRoomDisplay();
         }
-        
     }
     
     public void walkSouth()
@@ -108,10 +98,7 @@ public class GameManager : MonoBehaviour
         randomValue = Random.Range(1, 5);
         if (randomValue == 4)
         {
-            Debug.Log("A monster appeared!");
             SceneManager.LoadScene("Combat");
-            // Load Combat scene
-            // Add a random enemy? Or make a function that uses the Room's level? And put an enemy with the similar level in the combat.
         }
     }
 

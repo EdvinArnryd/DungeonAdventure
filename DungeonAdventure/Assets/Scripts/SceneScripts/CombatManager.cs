@@ -5,9 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // TODO
-// Big issue with null ref from heroClass
-// Because we never initialize it
-// Maybe we can do that inside of PlayerData?
+// Add a win popup screen with all necessary data
+// XP gain, gold, loot.
 public class CombatManager : MonoBehaviour
 {
     [Header("Initialize UI")]
@@ -67,7 +66,6 @@ public class CombatManager : MonoBehaviour
     {
         DisableButtons();
         StartCoroutine(AttackCoroutine());
-        EnemyAction();
     }
 
     private IEnumerator AttackCoroutine()
@@ -93,13 +91,14 @@ public class CombatManager : MonoBehaviour
             actionField.SetText(currentEnemy.type + " took " + player.GetDMG() + " damage.");
             yield return new WaitForSeconds(2f);
         }
+        
+        EnemyAction();
     }
 
     public void ThrowSpell()
     {
         DisableButtons();
         StartCoroutine(ThrowSpellCoroutine());
-        EnemyAction();
     }
 
     private IEnumerator ThrowSpellCoroutine()
@@ -120,13 +119,14 @@ public class CombatManager : MonoBehaviour
             actionField.SetText(currentEnemy.type + " took " + spellDamage + " damage.");
             yield return new WaitForSeconds(2f);
         }
+
+        EnemyAction();
     }
 
     public void Heal()
     {
         DisableButtons();
         StartCoroutine(HealCoroutine());
-        EnemyAction();
     }
 
     private IEnumerator HealCoroutine()
@@ -137,6 +137,8 @@ public class CombatManager : MonoBehaviour
         player.healPlayer(addedHealth);
         actionField.SetText("Player healed " + addedHealth + " HP!");
         yield return new WaitForSeconds(2f);
+        
+        EnemyAction();
     }
 
     private void WaitingForPlayer()
@@ -156,6 +158,7 @@ public class CombatManager : MonoBehaviour
 
     private void EnemyAction()
     {
+        actionField.SetText("Enemy's turn!");
         int random = Random.Range(1, 7);
         if (random == 6)
         {
@@ -202,13 +205,10 @@ public class CombatManager : MonoBehaviour
     private IEnumerator EnemyHealCoroutine()
     {
         yield return new WaitForSeconds(2f);
-        actionField.SetText("Enemy's turn!");
-        yield return new WaitForSeconds(2f);
         currentEnemy.healEnemy(3);
         UpdateUI();
         actionField.SetText("Enemy healed themselves!");
-        
-        WaitingForPlayer();
         yield return new WaitForSeconds(2f);
+        WaitingForPlayer();
     }
 }
