@@ -15,6 +15,9 @@ public class CombatManager : MonoBehaviour
     public TextMeshProUGUI enemyName;
     public TextMeshProUGUI enemyHealth;
     public TextMeshProUGUI actionField;
+    
+    public GameObject combatOverPanel;
+    public TextMeshProUGUI combatOverTxt;
 
     [Header("Initialize UI")]
     public Button AttackButton;
@@ -210,5 +213,39 @@ public class CombatManager : MonoBehaviour
         actionField.SetText("Enemy healed themselves!");
         yield return new WaitForSeconds(2f);
         WaitingForPlayer();
+    }
+
+    private void PlayerDied()
+    {
+        combatOverPanel.SetActive(true);
+        Image panelImage = combatOverPanel.GetComponent<Image>();
+        combatOverTxt.SetText("You died!");
+    
+        if (panelImage != null)
+        {
+            panelImage.color = new Color(1, 0,0, 0.5f);
+        }
+    }
+
+    private void EnemyDied()
+    {
+        combatOverPanel.SetActive(true);
+        Image panelImage = combatOverPanel.GetComponent<Image>();
+        combatOverTxt.SetText("You won!");
+            
+        if (panelImage != null)
+        {
+            panelImage.color = new Color(0,0,0,0.5f);
+        }
+    }
+
+    private void ContinueGameOver()
+    {
+        
+    }
+
+    private void ContinueWin()
+    {
+        
     }
 }
