@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 // TODO
 // Add a win popup screen with all necessary data
 // XP gain, gold, loot.
+// Fix so that player spawns at the entrance of the level when they die.
 public class CombatManager : MonoBehaviour
 {
     [Header("Initialize UI")]
@@ -18,7 +21,9 @@ public class CombatManager : MonoBehaviour
     
     public GameObject combatOverPanel;
     public TextMeshProUGUI combatOverTxt;
-
+    public Button combatOverContinue;
+    public Button combatOverRespawn;
+    
     [Header("Initialize UI")]
     public Button AttackButton;
     public Button SpellButton;
@@ -85,6 +90,15 @@ public class CombatManager : MonoBehaviour
             UpdateUI();
             actionField.SetText(currentEnemy.type + " took " + player.GetDMG() + " damage.");
             yield return new WaitForSeconds(2f);
+            
+            if (currentEnemy.HP <= 0)
+            {
+                yield return new WaitForSeconds(2f);
+                actionField.SetText("You killed the enemy!");
+                yield return new WaitForSeconds(2f);
+                EnemyDied();
+                yield break;
+            }
         }
         else
         {
@@ -93,6 +107,15 @@ public class CombatManager : MonoBehaviour
             UpdateUI();
             actionField.SetText(currentEnemy.type + " took " + player.GetDMG() + " damage.");
             yield return new WaitForSeconds(2f);
+            
+            if (currentEnemy.HP <= 0)
+            {
+                yield return new WaitForSeconds(2f);
+                actionField.SetText("You killed the enemy!");
+                yield return new WaitForSeconds(2f);
+                EnemyDied();
+                yield break;
+            }
         }
         
         EnemyAction();
@@ -121,6 +144,15 @@ public class CombatManager : MonoBehaviour
             UpdateUI();
             actionField.SetText(currentEnemy.type + " took " + spellDamage + " damage.");
             yield return new WaitForSeconds(2f);
+            
+            if (currentEnemy.HP <= 0)
+            {
+                yield return new WaitForSeconds(2f);
+                actionField.SetText("You killed the enemy!");
+                yield return new WaitForSeconds(2f);
+                EnemyDied();
+                yield break;
+            }
         }
 
         EnemyAction();
@@ -187,6 +219,14 @@ public class CombatManager : MonoBehaviour
             player.playerTakeDamage(currentEnemy.DMG * 2);
             UpdateUI();
             actionField.SetText("You lost " + currentEnemy.DMG * 2 + " health points.");
+            if (player.GetHP() <= 0)
+            {
+                yield return new WaitForSeconds(2f);
+                actionField.SetText("You Died!");
+                yield return new WaitForSeconds(2f);
+                PlayerDied();
+                yield break;
+            }
         }
         else if (randomValue == 5)
         {
@@ -199,6 +239,14 @@ public class CombatManager : MonoBehaviour
             player.playerTakeDamage(currentEnemy.DMG);
             UpdateUI();
             actionField.SetText("You lost " + currentEnemy.DMG + " health points.");
+            if (player.GetHP() <= 0)
+            {
+                yield return new WaitForSeconds(2f);
+                actionField.SetText("You Died!");
+                yield return new WaitForSeconds(2f);
+                PlayerDied();
+                yield break;
+            }
         }
         
         yield return new WaitForSeconds(2f);
@@ -225,6 +273,8 @@ public class CombatManager : MonoBehaviour
         {
             panelImage.color = new Color(1, 0,0, 0.5f);
         }
+        
+        combatOverRespawn.gameObject.SetActive(true);
     }
 
     private void EnemyDied()
@@ -237,15 +287,17 @@ public class CombatManager : MonoBehaviour
         {
             panelImage.color = new Color(0,0,0,0.5f);
         }
+
+        combatOverContinue.gameObject.SetActive(true);
     }
 
-    private void ContinueGameOver()
+    public void ContinueGameOver()
     {
-        
+        SceneManager.LoadScene("MainGame");
     }
 
-    private void ContinueWin()
+    public void ContinueWin()
     {
-        
+        SceneManager.LoadScene("MainGame");
     }
 }
