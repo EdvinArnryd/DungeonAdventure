@@ -23,6 +23,7 @@ public class CombatManager : MonoBehaviour
     public TextMeshProUGUI combatOverTxt;
     public Button combatOverContinue;
     public Button combatOverRespawn;
+    public TextMeshProUGUI lootTxt;
     
     [Header("Initialize UI")]
     public Button AttackButton;
@@ -279,6 +280,9 @@ public class CombatManager : MonoBehaviour
 
     private void EnemyDied()
     {
+        int randomValue = Random.Range(1, 10);
+        int gold = randomValue + 4;
+        int xp = (randomValue + 2) * 2;
         combatOverPanel.SetActive(true);
         Image panelImage = combatOverPanel.GetComponent<Image>();
         combatOverTxt.SetText("You won!");
@@ -287,7 +291,9 @@ public class CombatManager : MonoBehaviour
         {
             panelImage.color = new Color(0,0,0,0.5f);
         }
-
+        lootTxt.SetText("XP: " + xp + "\nGold: " + gold);
+        player.AddGold(gold);
+        player.AddXP(xp);
         combatOverContinue.gameObject.SetActive(true);
     }
 

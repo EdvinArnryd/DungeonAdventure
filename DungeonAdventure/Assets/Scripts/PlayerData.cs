@@ -8,12 +8,18 @@ public class PlayerData : ScriptableObject
     private int maxHP;
     private int DMG;
     private int Mana;
+    private int XP;
+    private int level;
+    private int gold;
     private List<Item> inventory;
     public HeroClass heroClass;
     private string playerName;
     // private int row, col;
     public void Initialize()
     {
+        gold = 0;
+        level = 1;
+        XP = 0;
         Mana = 15;
         maxHP = 25;
         HP = maxHP;
@@ -21,8 +27,19 @@ public class PlayerData : ScriptableObject
         inventory = new List<Item>(5);
         heroClass = null;
         playerName = "Player";
+        
         // row = 1;
         // col = 1;
+    }
+
+
+    public void AddGold(int goldAdded)
+    {
+        gold += goldAdded;
+    }
+    public void AddXP(int xpAdded)
+    {
+        XP += xpAdded;
     }
 
     public void UsedSpell()
