@@ -7,9 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 // TODO
-// Add a win popup screen with all necessary data
-// XP gain, gold, loot.
-// Fix so that player spawns at the entrance of the level when they die.
+// Create a player function that resets player's position on the map and lose some gold.
 public class CombatManager : MonoBehaviour
 {
     [Header("Initialize UI")]
