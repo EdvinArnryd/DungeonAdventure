@@ -33,6 +33,10 @@ public class PlayerData : ScriptableObject
     }
 
 
+    public int GetGold()
+    {
+        return gold;
+    }
     public void AddGold(int goldAdded)
     {
         gold += goldAdded;
@@ -40,6 +44,11 @@ public class PlayerData : ScriptableObject
     public void AddXP(int xpAdded)
     {
         XP += xpAdded;
+    }
+
+    public int GetXP()
+    {
+        return XP;
     }
 
     public void UsedSpell()

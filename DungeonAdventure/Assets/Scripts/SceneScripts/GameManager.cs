@@ -13,6 +13,12 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI displayRoomDescTxt;
     private int randomValue;
 
+    public TextMeshProUGUI ClassTxt;
+    public TextMeshProUGUI NameTxt;
+    public TextMeshProUGUI HealthTxt;
+    public TextMeshProUGUI XPTxt;
+    public TextMeshProUGUI GoldTxt;
+
     void Start()
     {
         // Initialize the map and player
@@ -24,6 +30,14 @@ public class GameManager : MonoBehaviour
         
         displayRoomTxt.SetText(map.map[col, row].roomName);
         displayRoomDescTxt.SetText(map.map[col, row].description);
+        
+        
+        // Set player stats
+        ClassTxt.SetText("Class: " + player.heroClass.className);
+        NameTxt.SetText("Name: " + player.GetName());
+        HealthTxt.SetText("Health: " + player.GetHP());
+        XPTxt.SetText("Experience: " + player.GetXP());
+        GoldTxt.SetText("Gold: " + player.GetGold());
     }
 
     void UpdateRoomDisplay()

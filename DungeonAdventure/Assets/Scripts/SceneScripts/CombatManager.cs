@@ -54,7 +54,7 @@ public class CombatManager : MonoBehaviour
         enemies.Add(imp);
         
         //Randomizing which enemy will be in combat
-        randomValue = Random.Range(0, enemies.Count-1);
+        randomValue = Random.Range(0, enemies.Count);
         currentEnemy = enemies[randomValue];
         
         enemyName.SetText(currentEnemy.type);
