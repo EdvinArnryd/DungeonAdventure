@@ -8,7 +8,8 @@ public class Item : MonoBehaviour
     // to change their values.
     public int dropChance;
     public int goldValue;
-    public string itemType;
     public string itemName;
     public string description;
+    public int intelligence;
+    public int strength;
 }

@@ -8,7 +8,6 @@ public class Mage : HeroClass
     public Mage()
     {
         strength = 2;
-        agility = 4;
         intelligence = 12;
         className = "Mage";
         description = "The wise mage wields the power of the elements to take down his foes.";

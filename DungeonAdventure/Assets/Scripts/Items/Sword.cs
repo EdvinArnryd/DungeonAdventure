@@ -6,9 +6,11 @@ public class Sword : Item
 {
     void Start()
     {
-        dropChance = 2;
+        dropChance = 20;
         goldValue = 5;
         itemName = "Sword";
         description = "A casual shiny sword.";
+        intelligence = 0;
+        strength = 4;
     }
 }

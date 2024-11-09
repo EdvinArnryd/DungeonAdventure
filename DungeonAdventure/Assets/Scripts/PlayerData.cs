@@ -11,7 +11,7 @@ public class PlayerData : ScriptableObject
     private int XP;
     private int level;
     private int gold;
-    private List<Item> inventory;
+    public List<Item> inventory;
     public HeroClass heroClass;
     private string playerName;
     // private int row, col;
@@ -32,7 +32,7 @@ public class PlayerData : ScriptableObject
         // col = 1;
     }
 
-
+    
     public int GetGold()
     {
         return gold;
