@@ -11,6 +11,9 @@ public class HeroClass
     public int intelligence;
     public string className;
     public string description;
+    public int strengthGrowth;
+    public int intelligenceGrowth;
+    public int healthGrowth;
 
     public int UseSpell(int heroIntelligence, int mana)
     {

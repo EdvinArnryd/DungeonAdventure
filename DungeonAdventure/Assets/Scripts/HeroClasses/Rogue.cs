@@ -11,6 +11,9 @@ public class Rogue : HeroClass
         intelligence = 8;
         className = "Rogue";
         description = "The sneaky rogue has a few tricks up his sleave to decieve anyone who crosses him.";
+        strengthGrowth = 2;
+        intelligenceGrowth = 2;
+        healthGrowth = 3;
     }
 
     // Update is called once per frame

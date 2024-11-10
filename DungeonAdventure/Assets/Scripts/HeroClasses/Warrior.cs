@@ -11,6 +11,9 @@ public class Warrior : HeroClass
         intelligence = 5;
         className = "Warrior";
         description = "Fierce and powerful! The warrior wields heavy weaponry to take down his foes.";
+        strengthGrowth = 3;
+        intelligenceGrowth = 1;
+        healthGrowth = 4;
     }
 
     // Update is called once per frame

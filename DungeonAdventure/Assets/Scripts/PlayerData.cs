@@ -14,6 +14,12 @@ public class PlayerData : ScriptableObject
     public List<Item> inventory;
     public HeroClass heroClass;
     private string playerName;
+    
+    // Combat Stats
+    private int Attack;
+    private int Magic;
+    private int strength;
+    private int intelligence;
     // private int row, col;
     public void Initialize()
     {
@@ -32,7 +38,30 @@ public class PlayerData : ScriptableObject
         // col = 1;
     }
 
-    
+    public void CalculateAttack()
+    {
+        int strengthSum = 0;
+        for (int i = 0; i < inventory.Count; i++)
+        {
+            strengthSum += inventory[i].strength;
+        }
+    }
+
+    public void CalculateMagic()
+    {
+        int intelligenceSum = 0;
+        for (int i = 0; i < inventory.Count; i++)
+        {
+            intelligenceSum += inventory[i].intelligence;
+        }
+    }
+    public void addItem(Item item)
+    {
+        if (inventory.Count < 5)
+        {
+            inventory.Add(item);
+        }
+    }
     public int GetGold()
     {
         return gold;

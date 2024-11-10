@@ -10,7 +10,7 @@ public class Sword : Item
         goldValue = 5;
         itemName = "Sword";
         description = "A casual shiny sword.";
-        intelligence = 0;
+        intelligence = 1;
         strength = 4;
     }
 }
