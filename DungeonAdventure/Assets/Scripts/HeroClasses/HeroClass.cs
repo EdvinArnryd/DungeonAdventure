@@ -14,6 +14,12 @@ public class HeroClass
     public int strengthGrowth;
     public int intelligenceGrowth;
     public int healthGrowth;
+    public int attackPower;
+
+    public int AttackEffectiveness(int playerStrength)
+    {
+        return playerStrength * attackPower / 10;
+    }
 
     public int UseSpell(int heroIntelligence, int mana)
     {
@@ -25,5 +31,15 @@ public class HeroClass
         }
 
         return spellDamage;
+    }
+
+    public int GetIntelligence()
+    {
+        return intelligence;
+    }
+    
+    public int GetStrength()
+    {
+        return strength;
     }
 }

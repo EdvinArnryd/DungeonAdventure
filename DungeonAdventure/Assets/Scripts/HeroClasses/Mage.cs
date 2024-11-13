@@ -14,6 +14,7 @@ public class Mage : HeroClass
         strengthGrowth = 1;
         intelligenceGrowth = 3;
         healthGrowth = 2;
+        attackPower = 11;
     }
 
     // Update is called once per frame

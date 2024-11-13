@@ -6,7 +6,6 @@ public class PlayerData : ScriptableObject
 {
     private int HP;
     private int maxHP;
-    private int DMG;
     private int Mana;
     private int XP;
     private int level;
@@ -16,8 +15,6 @@ public class PlayerData : ScriptableObject
     private string playerName;
     
     // Combat Stats
-    private int Attack;
-    private int Magic;
     private int strength;
     private int intelligence;
     // private int row, col;
@@ -29,32 +26,57 @@ public class PlayerData : ScriptableObject
         Mana = 15;
         maxHP = 25;
         HP = maxHP;
-        DMG = 10;
         inventory = new List<Item>(5);
         heroClass = null;
         playerName = "Player";
-        
+        strength = 0;
+        intelligence = 0;
+
         // row = 1;
         // col = 1;
     }
 
-    public void CalculateAttack()
+    public int GetStrength()
     {
-        int strengthSum = 0;
-        for (int i = 0; i < inventory.Count; i++)
-        {
-            strengthSum += inventory[i].strength;
-        }
+        return strength;
     }
 
-    public void CalculateMagic()
+    public int GetIntelligence()
+    {
+        return intelligence;
+    }
+    public void CalculateStrength()
+    {
+        int strengthSum = 0;
+        if (inventory.Count >= 1)
+        {
+            for (int i = 0; i < inventory.Count; i++)
+            {
+                strengthSum += inventory[i].strength;
+            }
+        }
+
+        strengthSum += heroClass.GetStrength();
+
+        strength = strengthSum;
+    }
+
+    public void CalculateIntelligence()
     {
         int intelligenceSum = 0;
-        for (int i = 0; i < inventory.Count; i++)
+        if (inventory.Count >= 1)
         {
-            intelligenceSum += inventory[i].intelligence;
+            for (int i = 0; i < inventory.Count; i++)
+            {
+                intelligenceSum += inventory[i].intelligence;
+            } 
         }
+        
+        intelligenceSum += heroClass.GetIntelligence();
+
+        intelligence = intelligenceSum;
     }
+    
     public void addItem(Item item)
     {
         if (inventory.Count < 5)
@@ -90,7 +112,7 @@ public class PlayerData : ScriptableObject
     }
     public int GetDMG()
     {
-        return DMG;
+        return heroClass.AttackEffectiveness(strength);
     }
     
     public int GetHP()

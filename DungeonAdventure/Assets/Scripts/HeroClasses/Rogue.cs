@@ -14,6 +14,7 @@ public class Rogue : HeroClass
         strengthGrowth = 2;
         intelligenceGrowth = 2;
         healthGrowth = 3;
+        attackPower = 12;
     }
 
     // Update is called once per frame

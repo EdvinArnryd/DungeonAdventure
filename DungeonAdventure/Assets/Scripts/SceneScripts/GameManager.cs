@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI HealthTxt;
     public TextMeshProUGUI XPTxt;
     public TextMeshProUGUI GoldTxt;
+    public TextMeshProUGUI STRTxt;
+    public TextMeshProUGUI INTTxt;
 
     void Start()
     {
@@ -31,13 +33,16 @@ public class GameManager : MonoBehaviour
         displayRoomTxt.SetText(map.map[col, row].roomName);
         displayRoomDescTxt.SetText(map.map[col, row].description);
         
-        
+        player.CalculateIntelligence();
+        player.CalculateStrength();
         // Set player stats
         ClassTxt.SetText("Class: " + player.heroClass.className);
         NameTxt.SetText("Name: " + player.GetName());
         HealthTxt.SetText("Health: " + player.GetHP());
         XPTxt.SetText("Experience: " + player.GetXP());
         GoldTxt.SetText("Gold: " + player.GetGold());
+        STRTxt.SetText("Strength: " + player.GetStrength());
+        INTTxt.SetText("Intelligence: " + player.GetIntelligence());
     }
 
     void UpdateRoomDisplay()

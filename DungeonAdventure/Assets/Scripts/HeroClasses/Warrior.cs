@@ -14,6 +14,7 @@ public class Warrior : HeroClass
         strengthGrowth = 3;
         intelligenceGrowth = 1;
         healthGrowth = 4;
+        attackPower = 13;
     }
 
     // Update is called once per frame
