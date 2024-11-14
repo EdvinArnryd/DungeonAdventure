@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewScriptableObject", menuName = "ScriptableObject/MyScriptableObject")]
+[CreateAssetMenu(fileName = "NewScriptableObject", menuName = "ScriptableObject/Player")]
 public class PlayerData : ScriptableObject
 {
     private int HP;

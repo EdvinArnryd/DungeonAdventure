@@ -16,6 +16,8 @@ public class CombatManager : MonoBehaviour
     public TextMeshProUGUI enemyName;
     public TextMeshProUGUI enemyHealth;
     public TextMeshProUGUI actionField;
+    public Image playerImage;
+    public Image enemyImage;
     
     public GameObject combatOverPanel;
     public TextMeshProUGUI combatOverTxt;
@@ -23,12 +25,14 @@ public class CombatManager : MonoBehaviour
     public Button combatOverRespawn;
     public TextMeshProUGUI lootTxt;
     
-    [Header("Initialize UI")]
+    [Header("Action Buttons")]
     public Button AttackButton;
     public Button SpellButton;
     public Button HealButton;
     
+    [Header("Player")]
     public PlayerData player;
+    
     private Enemy currentEnemy;
     private List<Enemy> enemies;
     private Skeleton skeleton;
@@ -60,6 +64,8 @@ public class CombatManager : MonoBehaviour
         enemyName.SetText(currentEnemy.type);
         playerName.SetText(player.GetName());
         UpdateUI();
+
+        playerImage.sprite = player.heroClass.spriteBack;
     }
 
     public void UpdateUI()

@@ -15,11 +15,6 @@ public class Rogue : HeroClass
         intelligenceGrowth = 2;
         healthGrowth = 3;
         attackPower = 12;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        spriteBack = Resources.Load<Sprite>("Art/Characters/RogueBack");
     }
 }

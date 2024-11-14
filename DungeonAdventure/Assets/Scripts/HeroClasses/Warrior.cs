@@ -15,12 +15,7 @@ public class Warrior : HeroClass
         intelligenceGrowth = 1;
         healthGrowth = 4;
         attackPower = 13;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        spriteBack = Resources.Load<Sprite>("Art/Characters/WarriorBack");
     }
     
 }

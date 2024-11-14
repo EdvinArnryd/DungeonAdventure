@@ -15,11 +15,6 @@ public class Mage : HeroClass
         intelligenceGrowth = 3;
         healthGrowth = 2;
         attackPower = 11;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        spriteBack = Resources.Load<Sprite>("Art/Characters/WizardBack");
     }
 }

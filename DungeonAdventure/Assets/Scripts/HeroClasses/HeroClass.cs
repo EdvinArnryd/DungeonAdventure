@@ -15,6 +15,7 @@ public class HeroClass
     public int intelligenceGrowth;
     public int healthGrowth;
     public int attackPower;
+    public Sprite spriteBack;
 
     public int AttackEffectiveness(int playerStrength)
     {
