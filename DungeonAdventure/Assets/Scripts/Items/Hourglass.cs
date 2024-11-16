@@ -5,9 +5,9 @@ using UnityEngine;
 public class Hourglass : Item
 {
     // Start is called before the first frame update
-    void Start()
+    public Hourglass()
     {
-        dropChance = 1;
+        dropChance = 15;
         goldValue = 99;
         itemName = "Hourglass";
         description = "I wonder what this could be used for...";

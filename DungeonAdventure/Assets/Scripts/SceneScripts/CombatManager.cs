@@ -39,9 +39,12 @@ public class CombatManager : MonoBehaviour
     private Zombie zombie;
     private Imp imp;
     private int randomValue;
+    private LootSystem lootSystem;
     
     void Start()
     {
+        lootSystem = new LootSystem();
+        lootSystem.Initialize();
         //Creating all enemies
         currentEnemy = new Enemy();
         skeleton = new Skeleton();
@@ -284,18 +287,31 @@ public class CombatManager : MonoBehaviour
 
     private void EnemyDied()
     {
-        int randomValue = Random.Range(1, 10);
-        int gold = randomValue + 4;
-        int xp = (randomValue + 2) * 2;
+        int randomXPGold = Random.Range(1, 10);
+        int gold = randomXPGold + 4;
+        int xp = (randomXPGold + 2) * 2;
         combatOverPanel.SetActive(true);
         Image panelImage = combatOverPanel.GetComponent<Image>();
         combatOverTxt.SetText("You won!");
+        
+        Item loot = new Item();
+        loot = lootSystem.LootDrop();
+        string lootName;
+        if (loot == null)
+        {
+            lootName = "Enemy dropped no loot.";
+        }
+        else
+        {
+            lootName = loot.itemName;
+            player.inventory.Add(loot);
+        }
             
         if (panelImage != null)
         {
             panelImage.color = new Color(0,0,0,0.5f);
         }
-        lootTxt.SetText("XP: " + xp + "\nGold: " + gold);
+        lootTxt.SetText("XP: " + xp + "\nGold: " + gold + "\nLoot: " + lootName); // <-- This line
         player.AddGold(gold);
         player.AddXP(xp);
         combatOverContinue.gameObject.SetActive(true);

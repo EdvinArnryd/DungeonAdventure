@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Wand : Item
 {
-    void Start()
+    public Wand()
     {
-        dropChance = 18;
+        dropChance = 60;
         goldValue = 9;
         itemName = "Wand";
         description = "A tiny magical wand.";

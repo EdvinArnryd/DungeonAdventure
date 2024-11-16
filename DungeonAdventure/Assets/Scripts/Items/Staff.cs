@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Staff : Item
 {
-    void Start()
+    public Staff()
     {
-        dropChance = 16;
+        dropChance = 40;
         goldValue = 11;
         itemName = "Staff";
         description = "A powerful magic staff.";

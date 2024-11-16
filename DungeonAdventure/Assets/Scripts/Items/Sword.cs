@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Sword : Item
 {
-    void Start()
+    public Sword()
     {
-        dropChance = 20;
+        dropChance = 50;
         goldValue = 5;
         itemName = "Sword";
         description = "A casual shiny sword.";

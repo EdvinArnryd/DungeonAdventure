@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Axe : Item
 {
-    void Start()
+    public Axe()
     {
-        dropChance = 15;
+        dropChance = 55;
         goldValue = 11;
         itemName = "Axe";
         description = "A strong axe.";
