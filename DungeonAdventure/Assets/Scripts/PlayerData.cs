@@ -26,7 +26,7 @@ public class PlayerData : ScriptableObject
         Mana = 15;
         maxHP = 25;
         HP = maxHP;
-        inventory = new List<Item>(5);
+        inventory = new List<Item>(8);
         heroClass = null;
         playerName = "Player";
         strength = 0;

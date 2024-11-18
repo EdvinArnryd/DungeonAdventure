@@ -13,5 +13,6 @@ public class Hourglass : Item
         description = "I wonder what this could be used for...";
         intelligence = 10;
         strength = 10;
+        sprite = Resources.Load<Sprite>("Art/Icons/HourglassIcon");
     }
 }

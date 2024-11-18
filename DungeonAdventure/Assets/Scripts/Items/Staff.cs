@@ -12,5 +12,6 @@ public class Staff : Item
         description = "A powerful magic staff.";
         intelligence = 5;
         strength = 2;
+        sprite = Resources.Load<Sprite>("Art/Icons/StaffIcon");
     }
 }

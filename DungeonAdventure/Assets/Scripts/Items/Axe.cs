@@ -12,5 +12,6 @@ public class Axe : Item
         description = "A strong axe.";
         intelligence = 0;
         strength = 6;
+        sprite = Resources.Load<Sprite>("Art/Icons/AxeIcon");
     }
 }

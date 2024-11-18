@@ -12,5 +12,6 @@ public class Wand : Item
         description = "A tiny magical wand.";
         intelligence = 4;
         strength = 1;
+        sprite = Resources.Load<Sprite>("Art/Icons/WandIcon");
     }
 }

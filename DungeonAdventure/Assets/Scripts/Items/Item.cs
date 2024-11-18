@@ -12,4 +12,5 @@ public class Item
     public string description;
     public int intelligence;
     public int strength;
+    public Sprite sprite;
 }
