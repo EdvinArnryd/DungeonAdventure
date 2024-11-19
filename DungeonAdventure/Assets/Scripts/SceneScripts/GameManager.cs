@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI STRTxt;
     public TextMeshProUGUI INTTxt;
 
+    public GameObject itemGrid;
+    public GameObject itemSlot;
+
     void Start()
     {
         // Initialize the map and player
@@ -43,6 +46,9 @@ public class GameManager : MonoBehaviour
         GoldTxt.SetText("Gold: " + player.GetGold());
         STRTxt.SetText("Strength: " + player.GetStrength());
         INTTxt.SetText("Intelligence: " + player.GetIntelligence());
+        
+        // update inventory
+        PopulateInventoryUI();
     }
 
     void UpdateRoomDisplay()
@@ -118,6 +124,21 @@ public class GameManager : MonoBehaviour
         if (randomValue == 4)
         {
             SceneManager.LoadScene("Combat");
+        }
+    }
+
+    public void PopulateInventoryUI()
+    {
+        foreach (Transform child in itemGrid.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (var item in player.inventory)
+        {
+            GameObject newSlot = Instantiate(itemSlot, itemGrid.transform);
+
+            newSlot.GetComponent<Image>().sprite = item.sprite;
         }
     }
 

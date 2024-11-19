@@ -6,7 +6,7 @@ public class Sword : Item
 {
     public Sword()
     {
-        dropChance = 99;
+        dropChance = 50;
         goldValue = 5;
         itemName = "Sword";
         description = "A casual shiny sword.";
