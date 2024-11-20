@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI displayRoomDescTxt;
     private int randomValue;
 
+    [Header("PlayerDataUI")] 
     public TextMeshProUGUI ClassTxt;
     public TextMeshProUGUI NameTxt;
     public TextMeshProUGUI HealthTxt;
@@ -21,9 +22,20 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI STRTxt;
     public TextMeshProUGUI INTTxt;
 
+    [Header("InventoryUI")] 
+    public TextMeshProUGUI ItemQuantity;
     public GameObject itemGrid;
     public GameObject itemSlot;
 
+
+    [Header("ItemDataUI")] 
+    public GameObject ItemInfoPanel;
+    public TextMeshProUGUI ItemName;
+    public TextMeshProUGUI ItemStrength; 
+    public TextMeshProUGUI ItemIntelligence;
+    public TextMeshProUGUI ItemGold;
+    public TextMeshProUGUI ItemDescription;
+    
     void Start()
     {
         // Initialize the map and player
@@ -129,17 +141,48 @@ public class GameManager : MonoBehaviour
 
     public void PopulateInventoryUI()
     {
+        if (player.inventory.Count != 0)
+        {
+            ItemQuantity.SetText(player.inventory.Count + "/" + player.inventory.Capacity);
+        }
+        
         foreach (Transform child in itemGrid.transform)
         {
             Destroy(child.gameObject);
         }
-
+        
+        int i = 0;
         foreach (var item in player.inventory)
         {
             GameObject newSlot = Instantiate(itemSlot, itemGrid.transform);
 
             newSlot.GetComponent<Image>().sprite = item.sprite;
+            newSlot.GetComponent<ItemSlot>().ID = i;
+            
+            Button button = newSlot.GetComponent<Button>();
+            if (button != null)
+            {
+                int itemIndex = i; // Capture the current index in a local variable
+                button.onClick.AddListener(() => ItemPressed(itemIndex));
+            }
+            
+            i++;
         }
+    }
+
+    public void ItemPressed(int ID)
+    {
+        ItemInfoPanel.SetActive(true);
+        ItemName.SetText(player.inventory[ID].itemName);
+        ItemStrength.SetText("Strength: " + player.inventory[ID].strength);
+        ItemIntelligence.SetText("Intelligence: " + player.inventory[ID].intelligence);
+        ItemGold.SetText("Gold: " + player.inventory[ID].goldValue);
+        ItemDescription.SetText("Description: " + player.inventory[ID].description);
+    }
+
+    public void ExitItemInfo()
+    {
+        ItemInfoPanel.SetActive(false);
     }
 
 }
