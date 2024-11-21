@@ -30,11 +30,15 @@ public class Map
         Room observatory = new Room("Observatory", "The night sky can be seen through a broken telescope.");
         Room cellar = new Room("Cellar", "Dusty barrels and crates are stacked in this cold, damp room.");
         Room chapel = new Room("Chapel", "An old chapel with shattered stained-glass windows.");
+        Room shopkeeper = new SpecialRoom("Shop Keeper", "You entered the shop!", Resources.Load<Sprite>("Art/NPC/ShopKeeper"));
+        Room witch = new Room("Witch", "You lose 5 health for walking upon the with!");
+        Room enchantress = new Room("Enchantress", "You walked upon the enchantress!");
         
         map = new Room[,] {
-            {corridor, barracks, armory},
-            {hall, cave, kitchen},
-            {throneRoom, cellar, library},
+            {corridor, shopkeeper, armory, dungeon},
+            {hall, cave, kitchen, treasury},
+            {throneRoom, cellar, library, garden},
+            {observatory, chapel, barracks, witch}
         };
 
         maxHeight = map.GetLength(0);

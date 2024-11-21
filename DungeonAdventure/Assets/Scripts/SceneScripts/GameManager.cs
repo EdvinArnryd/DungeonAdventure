@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+// Continue on special rooms
+// Make it so that if the room is a special room then display the specific sprite of that special room
 public class GameManager : MonoBehaviour
 {
     public PlayerData player;  // Assign the Player object via Inspector
@@ -35,18 +37,24 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI ItemIntelligence;
     public TextMeshProUGUI ItemGold;
     public TextMeshProUGUI ItemDescription;
+
+    [Header("ItemDataUI")] 
+    public GameObject SpecialEventSprite;
     
+    private Room currentRoom;
     void Start()
     {
         // Initialize the map and player
         map = new Map();
         map.Initialize();
+        
         // player = new Player();
         row = 0;
         col = 0;
+        currentRoom = map.map[col, row];
         
-        displayRoomTxt.SetText(map.map[col, row].roomName);
-        displayRoomDescTxt.SetText(map.map[col, row].description);
+        displayRoomTxt.SetText(currentRoom.roomName);
+        displayRoomDescTxt.SetText(currentRoom.description);
         
         player.CalculateIntelligence();
         player.CalculateStrength();
@@ -66,8 +74,13 @@ public class GameManager : MonoBehaviour
     void UpdateRoomDisplay()
     {
         TriggerCombat();
-        displayRoomTxt.SetText(map.map[col, row].roomName);
-        displayRoomDescTxt.SetText(map.map[col, row].description);
+        displayRoomTxt.SetText(currentRoom.roomName);
+        displayRoomDescTxt.SetText(currentRoom.description);
+
+        if (currentRoom is SpecialRoom specialRoom)
+        {
+            
+        }
     }
     
     public void walkNorth()
