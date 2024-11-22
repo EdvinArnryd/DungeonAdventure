@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class SpecialRoom : Room
 {
-    public Sprite eventSprite;
-    public SpecialRoom(string roomName, string description, Sprite eventSprite) : base(roomName, description)
+    public Sprite npcSprite;
+    public SpecialRoom(string roomName, string description, Sprite npcSprite) : base(roomName, description)
     {
-        this.eventSprite = eventSprite;
-
+        this.npcSprite = npcSprite;
     }
 }

@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI ItemQuantity;
     public GameObject itemGrid;
     public GameObject itemSlot;
+    public Button sellButton;
 
 
     [Header("ItemDataUI")] 
@@ -39,7 +40,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI ItemDescription;
 
     [Header("ItemDataUI")] 
-    public GameObject SpecialEventSprite;
+    public GameObject SpecialRoomObject;
     
     private Room currentRoom;
     void Start()
@@ -51,8 +52,8 @@ public class GameManager : MonoBehaviour
         // player = new Player();
         row = 0;
         col = 0;
-        currentRoom = map.map[col, row];
         
+        currentRoom = map.map[col, row];
         displayRoomTxt.SetText(currentRoom.roomName);
         displayRoomDescTxt.SetText(currentRoom.description);
         
@@ -73,13 +74,23 @@ public class GameManager : MonoBehaviour
 
     void UpdateRoomDisplay()
     {
-        TriggerCombat();
+        currentRoom = map.map[col, row];
         displayRoomTxt.SetText(currentRoom.roomName);
         displayRoomDescTxt.SetText(currentRoom.description);
+        SpecialRoomObject.SetActive(false);
 
+        // Special Room Logic
         if (currentRoom is SpecialRoom specialRoom)
         {
-            
+            SpecialRoomObject.SetActive(true);
+            if (currentRoom.roomName == "Shop Keeper")
+            {
+                SpecialRoomObject.GetComponent<Image>().sprite = specialRoom.npcSprite;
+            }
+        }
+        else
+        {
+            TriggerCombat();
         }
     }
     
