@@ -3,8 +3,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-// Continue on special rooms
-// Make it so that if the room is a special room then display the specific sprite of that special room
 public class GameManager : MonoBehaviour
 {
     public PlayerData player;  // Assign the Player object via Inspector
@@ -56,17 +54,9 @@ public class GameManager : MonoBehaviour
         currentRoom = map.map[col, row];
         displayRoomTxt.SetText(currentRoom.roomName);
         displayRoomDescTxt.SetText(currentRoom.description);
+
+        UpdatePlayerStats();
         
-        player.CalculateIntelligence();
-        player.CalculateStrength();
-        // Set player stats
-        ClassTxt.SetText("Class: " + player.heroClass.className);
-        NameTxt.SetText("Name: " + player.GetName());
-        HealthTxt.SetText("Health: " + player.GetHP());
-        XPTxt.SetText("Experience: " + player.GetXP());
-        GoldTxt.SetText("Gold: " + player.GetGold());
-        STRTxt.SetText("Strength: " + player.GetStrength());
-        INTTxt.SetText("Intelligence: " + player.GetIntelligence());
         
         // update inventory
         PopulateInventoryUI();
@@ -86,10 +76,12 @@ public class GameManager : MonoBehaviour
             if (currentRoom.roomName == "Shop Keeper")
             {
                 SpecialRoomObject.GetComponent<Image>().sprite = specialRoom.npcSprite;
+                sellButton.gameObject.SetActive(true);
             }
         }
         else
         {
+            sellButton.gameObject.SetActive(false);
             TriggerCombat();
         }
     }
@@ -165,10 +157,16 @@ public class GameManager : MonoBehaviour
 
     public void PopulateInventoryUI()
     {
-        if (player.inventory.Count != 0)
-        {
-            ItemQuantity.SetText(player.inventory.Count + "/" + player.inventory.Capacity);
-        }
+        // if (player.inventory.Count != 0)
+        // {
+        //     ItemQuantity.SetText(player.inventory.Count + "/" + player.inventory.Capacity);
+        // }
+        // else
+        // {
+        //     ItemQuantity.SetText(player.inventory.Count + "/" + player.inventory.Capacity);
+        // }
+        
+        ItemQuantity.SetText(player.inventory.Count + "/" + player.inventory.Capacity);
         
         foreach (Transform child in itemGrid.transform)
         {
@@ -186,7 +184,7 @@ public class GameManager : MonoBehaviour
             Button button = newSlot.GetComponent<Button>();
             if (button != null)
             {
-                int itemIndex = i; // Capture the current index in a local variable
+                int itemIndex = i;
                 button.onClick.AddListener(() => ItemPressed(itemIndex));
             }
             
@@ -202,11 +200,37 @@ public class GameManager : MonoBehaviour
         ItemIntelligence.SetText("Intelligence: " + player.inventory[ID].intelligence);
         ItemGold.SetText("Gold: " + player.inventory[ID].goldValue);
         ItemDescription.SetText("Description: " + player.inventory[ID].description);
+        sellButton.GetComponent<SellButton>().ID = ID;
     }
 
     public void ExitItemInfo()
     {
         ItemInfoPanel.SetActive(false);
+    }
+
+    public void SellItem()
+    {
+        int BTNID = sellButton.GetComponent<SellButton>().ID;
+        int itemGoldValue = player.inventory[BTNID].goldValue;
+        player.AddGold(itemGoldValue);
+        player.inventory.RemoveAt(BTNID);
+        ItemInfoPanel.SetActive(false);
+        PopulateInventoryUI();
+        UpdatePlayerStats();
+    }
+
+    public void UpdatePlayerStats()
+    {
+        player.CalculateIntelligence();
+        player.CalculateStrength();
+        // Set player stats
+        ClassTxt.SetText("Class: " + player.heroClass.className);
+        NameTxt.SetText("Name: " + player.GetName());
+        HealthTxt.SetText("Health: " + player.GetHP());
+        XPTxt.SetText("Experience: " + player.GetXP());
+        GoldTxt.SetText("Gold: " + player.GetGold());
+        STRTxt.SetText("Strength: " + player.GetStrength());
+        INTTxt.SetText("Intelligence: " + player.GetIntelligence());
     }
 
 }

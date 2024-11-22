@@ -18,6 +18,9 @@ public class PlayerData : ScriptableObject
     private int strength;
     private int intelligence;
     // private int row, col;
+    
+    
+    
     public void Initialize()
     {
         gold = 0;
@@ -31,6 +34,12 @@ public class PlayerData : ScriptableObject
         playerName = "Player";
         strength = 0;
         intelligence = 0;
+        Sword sword = new Sword();
+        Axe axe = new Axe();
+        
+        inventory.Add(sword);
+        inventory.Add(axe);
+        inventory.Add(sword);
 
         // row = 1;
         // col = 1;
