@@ -174,6 +174,7 @@ public class CombatManager : MonoBehaviour
 
     private IEnumerator HealCoroutine()
     {
+        
         actionField.SetText("Player healed!");
         yield return new WaitForSeconds(2f);
         int addedHealth = 3;

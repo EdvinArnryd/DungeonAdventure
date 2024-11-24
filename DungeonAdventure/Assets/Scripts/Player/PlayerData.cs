@@ -10,7 +10,10 @@ public class PlayerData : ScriptableObject
     private int XP;
     private int level;
     private int gold;
+    private int healthPotions;
+    private int manaPotions;
     public List<Item> inventory;
+    private List<Token> tokens;
     public HeroClass heroClass;
     private string playerName;
     
@@ -23,13 +26,16 @@ public class PlayerData : ScriptableObject
     
     public void Initialize()
     {
-        gold = 0;
+        gold = 50;
         level = 1;
         XP = 0;
         Mana = 15;
         maxHP = 25;
         HP = maxHP;
+        healthPotions = 2;
+        manaPotions = 2;
         inventory = new List<Item>(8);
+        tokens = new List<Token>(3);
         heroClass = null;
         playerName = "Player";
         strength = 0;
@@ -43,6 +49,75 @@ public class PlayerData : ScriptableObject
 
         // row = 1;
         // col = 1;
+    }
+
+    public int GetHealthPotions()
+    {
+        return healthPotions;
+    }
+    
+    public int GetManaPotions()
+    {
+        return manaPotions;
+    }
+
+    public void AddToken(Token tokenToAdd)
+    {
+        if (!tokens.Contains(tokenToAdd))
+        {
+            tokens.Add(tokenToAdd);
+        }
+    }
+
+    public bool GetSpecificToken(Token wantedToken)
+    {
+        foreach (var token in tokens)
+        {
+            if (token == wantedToken)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void playerLoseGold(int goldLost)
+    {
+        gold -= goldLost;
+    }
+
+    public bool useHealthPotion()
+    {
+        if (healthPotions > 0)
+        {
+            healthPotions--;
+            return true;
+        }
+
+        return false;
+    }
+
+    public void addHealthPotion()
+    {
+        healthPotions++;
+    }
+    
+    
+    
+    public void addManaPotion()
+    {
+        manaPotions++;
+    }
+    
+    public bool useManaPotion()
+    {
+        if (manaPotions > 0)
+        {
+            manaPotions--;
+            return true;
+        }
+
+        return false;
     }
 
     public int GetStrength()

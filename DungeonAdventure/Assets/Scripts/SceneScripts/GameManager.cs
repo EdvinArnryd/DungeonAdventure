@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI GoldTxt;
     public TextMeshProUGUI STRTxt;
     public TextMeshProUGUI INTTxt;
+    public TextMeshProUGUI healthPotsTxt;
+    public TextMeshProUGUI manaPotsTxt;
 
     [Header("InventoryUI")] 
     public TextMeshProUGUI ItemQuantity;
@@ -41,6 +43,7 @@ public class GameManager : MonoBehaviour
     public GameObject SpecialRoomObject;
     
     private Room currentRoom;
+    
     void Start()
     {
         // Initialize the map and player
@@ -231,6 +234,8 @@ public class GameManager : MonoBehaviour
         GoldTxt.SetText("Gold: " + player.GetGold());
         STRTxt.SetText("Strength: " + player.GetStrength());
         INTTxt.SetText("Intelligence: " + player.GetIntelligence());
+        healthPotsTxt.SetText(player.GetHealthPotions().ToString());
+        manaPotsTxt.SetText(player.GetManaPotions().ToString());
     }
 
 }
