@@ -13,6 +13,7 @@ public class CombatManager : MonoBehaviour
     [Header("Initialize UI")]
     public TextMeshProUGUI playerName;
     public TextMeshProUGUI playerHealth;
+    public TextMeshProUGUI playerMana;
     public TextMeshProUGUI enemyName;
     public TextMeshProUGUI enemyHealth;
     public TextMeshProUGUI actionField;
@@ -29,9 +30,14 @@ public class CombatManager : MonoBehaviour
     public Button AttackButton;
     public Button SpellButton;
     public Button HealButton;
+    public Button ManaButton;
     
     [Header("Player")]
     public PlayerData player;
+    
+    [Header("Potions")]
+    public TextMeshProUGUI healthPotions;
+    public TextMeshProUGUI manaPotions;
     
     private Enemy currentEnemy;
     private List<Enemy> enemies;
@@ -69,12 +75,16 @@ public class CombatManager : MonoBehaviour
         UpdateUI();
 
         playerImage.sprite = player.heroClass.spriteBack;
+        
+        healthPotions.SetText(player.GetHealthPotions().ToString());
+        manaPotions.SetText(player.GetManaPotions().ToString());
     }
 
     public void UpdateUI()
     {
         // Set Player and Enemy's Name's and health to UI
         playerHealth.SetText(player.GetHP().ToString());
+        playerMana.SetText(player.GetMana().ToString());
         enemyHealth.SetText(currentEnemy.HP.ToString());
     }
 
@@ -174,13 +184,47 @@ public class CombatManager : MonoBehaviour
 
     private IEnumerator HealCoroutine()
     {
-        
         actionField.SetText("Player healed!");
         yield return new WaitForSeconds(2f);
-        int addedHealth = 3;
-        player.healPlayer(addedHealth);
-        actionField.SetText("Player healed " + addedHealth + " HP!");
+        if (player.useHealthPotion(5))
+        {
+            UpdateUI();
+            healthPotions.SetText(player.GetHealthPotions().ToString());
+            actionField.SetText("Player used health potion!");
+            yield return new WaitForSeconds(2f);
+        }
+        else
+        {
+            actionField.SetText("Player is out of health potions!");
+            yield return new WaitForSeconds(2f);
+        }
+        
+        EnemyAction();
+    }
+
+    public void Mana()
+    {
+        DisableButtons();
+        StartCoroutine(ManaCoroutine());
+    }
+
+    private IEnumerator ManaCoroutine()
+    {
+        actionField.SetText("Player used Mana potion!");
         yield return new WaitForSeconds(2f);
+
+        if (player.useManaPotion(6))
+        {
+            UpdateUI();
+            actionField.SetText("Player used mana potion!");
+            manaPotions.SetText(player.GetManaPotions().ToString());
+            yield return new WaitForSeconds(2f);
+        }
+        else
+        {
+            actionField.SetText("Player is out of mana potions!");
+            yield return new WaitForSeconds(2f);
+        }
         
         EnemyAction();
     }
@@ -191,6 +235,7 @@ public class CombatManager : MonoBehaviour
         AttackButton.interactable = true;
         SpellButton.interactable = true;
         HealButton.interactable = true;
+        ManaButton.interactable = true;
     }
 
     private void DisableButtons()
@@ -198,6 +243,7 @@ public class CombatManager : MonoBehaviour
         AttackButton.interactable = false;
         SpellButton.interactable = false;
         HealButton.interactable = false;
+        ManaButton.interactable = false;
     }
 
     private void EnemyAction()
@@ -320,11 +366,11 @@ public class CombatManager : MonoBehaviour
 
     public void ContinueGameOver()
     {
-        SceneManager.LoadScene("MainGame");
+        SceneManager.LoadScene("Game");
     }
 
     public void ContinueWin()
     {
-        SceneManager.LoadScene("MainGame");
+        SceneManager.LoadScene("Game");
     }
 }

@@ -7,6 +7,7 @@ public class PlayerData : ScriptableObject
     private int HP;
     private int maxHP;
     private int Mana;
+    private int maxMana;
     private int XP;
     private int level;
     private int gold;
@@ -29,7 +30,8 @@ public class PlayerData : ScriptableObject
         gold = 50;
         level = 1;
         XP = 0;
-        Mana = 15;
+        maxMana = 15;
+        Mana = maxMana;
         maxHP = 25;
         HP = maxHP;
         healthPotions = 2;
@@ -89,40 +91,6 @@ public class PlayerData : ScriptableObject
     public void playerLoseGold(int goldLost)
     {
         gold -= goldLost;
-    }
-
-    public bool useHealthPotion()
-    {
-        if (healthPotions > 0)
-        {
-            healthPotions--;
-            return true;
-        }
-
-        return false;
-    }
-
-    public void addHealthPotion()
-    {
-        healthPotions++;
-    }
-    
-    
-    
-    public void addManaPotion()
-    {
-        manaPotions++;
-    }
-    
-    public bool useManaPotion()
-    {
-        if (manaPotions > 0)
-        {
-            manaPotions--;
-            return true;
-        }
-
-        return false;
     }
 
     public int GetStrength()
@@ -199,23 +167,57 @@ public class PlayerData : ScriptableObject
     {
         return Mana;
     }
-    public int GetDMG()
+
+    public bool useManaPotion(int manaAdded)
     {
-        return heroClass.AttackEffectiveness(strength);
+        if (manaPotions > 0)
+        {
+            Mana += manaAdded;
+            if (Mana > maxMana)
+            {
+                Mana = maxMana;
+            }
+            manaPotions--;
+            return true;
+        }
+
+        return false;
+    }
+
+    public void addManaPotion()
+    {
+        manaPotions++;
+    }
+
+    public bool useHealthPotion(int addedHealth)
+    {
+        if (healthPotions > 0)
+        {
+            HP += addedHealth;
+            if (HP > maxHP)
+            {
+                HP = maxHP;
+            }
+            healthPotions--;
+            return true;
+        }
+
+        return false;
+    }
+
+    public void addHealthPotion()
+    {
+        healthPotions++;
     }
     
     public int GetHP()
     {
         return HP;
     }
-
-    public void healPlayer(int addedHealth)
+    
+    public int GetDMG()
     {
-        HP += addedHealth;
-        if (HP > maxHP)
-        {
-            HP = maxHP;
-        }
+        return heroClass.AttackEffectiveness(strength);
     }
 
     public void playerTakeDamage(int damage)
