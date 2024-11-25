@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI GoldTxt;
     public TextMeshProUGUI STRTxt;
     public TextMeshProUGUI INTTxt;
+    public TextMeshProUGUI ManaTxt;
     public TextMeshProUGUI healthPotsTxt;
     public TextMeshProUGUI manaPotsTxt;
 
@@ -41,6 +42,10 @@ public class GameManager : MonoBehaviour
 
     [Header("ItemDataUI")] 
     public GameObject SpecialRoomObject;
+
+    [Header("TokenUI")]
+    public GameObject tokenGrid;
+    public GameObject tokenSlot;
     
     private Room currentRoom;
     
@@ -63,6 +68,7 @@ public class GameManager : MonoBehaviour
         
         // update inventory
         PopulateInventoryUI();
+        PopulateTokenUI();
     }
 
     void UpdateRoomDisplay()
@@ -158,17 +164,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void PopulateTokenUI()
+    {
+        foreach (Transform child in tokenGrid.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (var token in player.GetTokens())
+        {
+            GameObject newSlot = Instantiate(tokenSlot, tokenGrid.transform);
+            newSlot.GetComponent<Image>().sprite = token.tokenSprite;
+        }
+    }
+
     public void PopulateInventoryUI()
     {
-        // if (player.inventory.Count != 0)
-        // {
-        //     ItemQuantity.SetText(player.inventory.Count + "/" + player.inventory.Capacity);
-        // }
-        // else
-        // {
-        //     ItemQuantity.SetText(player.inventory.Count + "/" + player.inventory.Capacity);
-        // }
-        
         ItemQuantity.SetText(player.inventory.Count + "/" + player.inventory.Capacity);
         
         foreach (Transform child in itemGrid.transform)
@@ -234,6 +245,7 @@ public class GameManager : MonoBehaviour
         GoldTxt.SetText("Gold: " + player.GetGold());
         STRTxt.SetText("Strength: " + player.GetStrength());
         INTTxt.SetText("Intelligence: " + player.GetIntelligence());
+        ManaTxt.SetText("Mana: " + player.GetMana());
         healthPotsTxt.SetText(player.GetHealthPotions().ToString());
         manaPotsTxt.SetText(player.GetManaPotions().ToString());
     }

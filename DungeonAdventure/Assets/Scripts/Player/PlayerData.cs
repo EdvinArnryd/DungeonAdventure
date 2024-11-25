@@ -61,6 +61,11 @@ public class PlayerData : ScriptableObject
         return manaPotions;
     }
 
+    public List<Token> GetTokens()
+    {
+        return tokens;
+    }
+
     public void AddToken(Token tokenToAdd)
     {
         if (!tokens.Contains(tokenToAdd))
