@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI NameTxt;
     public TextMeshProUGUI HealthTxt;
     public TextMeshProUGUI XPTxt;
+    public TextMeshProUGUI LevelTxt;
     public TextMeshProUGUI GoldTxt;
     public TextMeshProUGUI STRTxt;
     public TextMeshProUGUI INTTxt;
@@ -241,7 +242,8 @@ public class GameManager : MonoBehaviour
         ClassTxt.SetText("Class: " + player.heroClass.className);
         NameTxt.SetText("Name: " + player.GetName());
         HealthTxt.SetText("Health: " + player.GetHP());
-        XPTxt.SetText("Experience: " + player.GetXP());
+        XPTxt.SetText("Experience: " + player.GetXP() + "/" + player.GetXpThreshold());
+        LevelTxt.SetText("Level: " + player.GetLevel());
         GoldTxt.SetText("Gold: " + player.GetGold());
         STRTxt.SetText("Strength: " + player.GetStrength());
         INTTxt.SetText("Intelligence: " + player.GetIntelligence());

@@ -9,6 +9,7 @@ public class PlayerData : ScriptableObject
     private int Mana;
     private int maxMana;
     private int XP;
+    private int xpThreshold;
     private int level;
     private int gold;
     private int healthPotions;
@@ -42,6 +43,7 @@ public class PlayerData : ScriptableObject
         playerName = "Player";
         strength = 0;
         intelligence = 0;
+        xpThreshold = 10;
         Sword sword = new Sword();
         Axe axe = new Axe();
         
@@ -149,14 +151,29 @@ public class PlayerData : ScriptableObject
     {
         gold += goldAdded;
     }
+
+    public int GetLevel()
+    {
+        return level;
+    }
     public void AddXP(int xpAdded)
     {
         XP += xpAdded;
+        if (XP >= xpThreshold)
+        {
+            level++;
+            xpThreshold = level * 2 + 20 + xpThreshold;
+        }
     }
 
     public int GetXP()
     {
         return XP;
+    }
+
+    public int GetXpThreshold()
+    {
+        return xpThreshold;
     }
 
     public void UsedSpell()
