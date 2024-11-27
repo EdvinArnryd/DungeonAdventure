@@ -14,6 +14,7 @@ public class Rogue : HeroClass
         strengthGrowth = 2;
         intelligenceGrowth = 2;
         healthGrowth = 3;
+        manaGrowth = 2;
         attackPower = 12;
         spriteBack = Resources.Load<Sprite>("Art/Characters/RogueBack");
     }

@@ -14,6 +14,7 @@ public class Mage : HeroClass
         strengthGrowth = 1;
         intelligenceGrowth = 3;
         healthGrowth = 2;
+        manaGrowth = 4;
         attackPower = 11;
         spriteBack = Resources.Load<Sprite>("Art/Characters/WizardBack");
     }

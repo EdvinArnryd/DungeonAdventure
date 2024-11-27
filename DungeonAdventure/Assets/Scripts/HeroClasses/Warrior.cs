@@ -14,6 +14,7 @@ public class Warrior : HeroClass
         strengthGrowth = 3;
         intelligenceGrowth = 1;
         healthGrowth = 4;
+        manaGrowth = 1;
         attackPower = 13;
         spriteBack = Resources.Load<Sprite>("Art/Characters/WarriorBack");
     }

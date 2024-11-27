@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -5,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 // TODO
 // Create a player function that resets player's position on the map and lose some gold.
@@ -38,6 +40,15 @@ public class CombatManager : MonoBehaviour
     [Header("Potions")]
     public TextMeshProUGUI healthPotions;
     public TextMeshProUGUI manaPotions;
+
+    [Header("LevelUp")] 
+    public GameObject levelUpPopUp;
+    public TextMeshProUGUI levelUpText;
+    public TextMeshProUGUI healthIncreaseTxt;
+    public TextMeshProUGUI manaIncreaseTxt;
+    public TextMeshProUGUI strengthIncreaseTxt;
+    public TextMeshProUGUI intelligenceIncreaseTxt;
+    public Button continueButton;
     
     private Enemy currentEnemy;
     private List<Enemy> enemies;
@@ -78,6 +89,13 @@ public class CombatManager : MonoBehaviour
         
         healthPotions.SetText(player.GetHealthPotions().ToString());
         manaPotions.SetText(player.GetManaPotions().ToString());
+
+        player.OnLevelUp += HandleLevelUp;
+    }
+
+    private void OnDestroy()
+    {
+        player.OnLevelUp -= HandleLevelUp;
     }
 
     public void UpdateUI()
@@ -363,6 +381,16 @@ public class CombatManager : MonoBehaviour
         player.AddXP(xp);
         combatOverContinue.gameObject.SetActive(true);
     }
+    
+    private void HandleLevelUp()
+    {
+        levelUpPopUp.SetActive(true);
+        levelUpText.SetText(player.GetLevel().ToString());
+        healthIncreaseTxt.SetText(player.heroClass.healthGrowth.ToString());
+        manaIncreaseTxt.SetText(player.heroClass.manaGrowth.ToString());
+        strengthIncreaseTxt.SetText(player.heroClass.strengthGrowth.ToString());
+        intelligenceIncreaseTxt.SetText(player.heroClass.intelligenceGrowth.ToString());
+    }
 
     public void ContinueGameOver()
     {
@@ -373,4 +401,10 @@ public class CombatManager : MonoBehaviour
     {
         SceneManager.LoadScene("Game");
     }
+
+    public void ContinueLevelUp()
+    {
+        levelUpPopUp.SetActive(false);
+    }
+
 }

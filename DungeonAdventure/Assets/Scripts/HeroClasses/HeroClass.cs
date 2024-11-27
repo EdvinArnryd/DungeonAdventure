@@ -14,6 +14,7 @@ public class HeroClass
     public int strengthGrowth;
     public int intelligenceGrowth;
     public int healthGrowth;
+    public int manaGrowth;
     public int attackPower;
     public Sprite spriteBack;
 

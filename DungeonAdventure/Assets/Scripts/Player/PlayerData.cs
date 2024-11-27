@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,6 +19,9 @@ public class PlayerData : ScriptableObject
     private List<Token> tokens;
     public HeroClass heroClass;
     private string playerName;
+
+    public event Action OnLevelUp;
+    
     
     // Combat Stats
     private int strength;
@@ -161,9 +165,24 @@ public class PlayerData : ScriptableObject
         XP += xpAdded;
         if (XP >= xpThreshold)
         {
-            level++;
-            xpThreshold = level * 2 + 20 + xpThreshold;
+            LevelUp();
         }
+    }
+
+    public void LevelUp()
+    {
+        level++;
+        xpThreshold = level * 4 + 20 + xpThreshold;
+
+        strength += heroClass.strengthGrowth;
+        intelligence += heroClass.intelligenceGrowth;
+        maxHP += heroClass.healthGrowth;
+        maxMana += heroClass.manaGrowth;
+
+        HP = maxHP;
+        Mana = maxMana;
+        
+        OnLevelUp?.Invoke();
     }
 
     public int GetXP()
