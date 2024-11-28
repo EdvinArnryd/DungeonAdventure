@@ -19,6 +19,7 @@ public class PlayerData : ScriptableObject
     private List<Token> tokens;
     public HeroClass heroClass;
     private string playerName;
+    private int points;
 
     public int col;
     public int row;
@@ -42,7 +43,7 @@ public class PlayerData : ScriptableObject
         XP = 0;
         maxMana = 15;
         Mana = maxMana;
-        maxHP = 25;
+        maxHP = -10;
         HP = maxHP;
         healthPotions = 2;
         manaPotions = 2;
@@ -85,6 +86,16 @@ public class PlayerData : ScriptableObject
     //     return row;
     // }
 
+    public bool IsSecondLevel()
+    {
+        if (GetMap().levelName == "Level2")
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     public Room[,] GetDungeonLevel()
     {
         return dungeonLevel;
@@ -93,6 +104,11 @@ public class PlayerData : ScriptableObject
     public void SetMap(Map map)
     {
         playerMap = map;
+    }
+
+    public Map GetMap()
+    {
+        return playerMap;
     }
 
     public void SetDungeonLevel(Room[,] newDungeonLevel)
@@ -128,6 +144,18 @@ public class PlayerData : ScriptableObject
         foreach (var token in tokens)
         {
             if (token == wantedToken)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public bool GetSpecificToken(String wantedToken)
+    {
+        foreach (var token in tokens)
+        {
+            if (token.tokenName == wantedToken)
             {
                 return true;
             }
@@ -320,5 +348,11 @@ public class PlayerData : ScriptableObject
     public void ResetData()
     {
         Initialize(); // Reset to defaults
+    }
+
+    public int GetFinalPoints()
+    {
+        int score = gold + XP;
+        return score;
     }
 }

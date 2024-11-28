@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI displayRoomDescTxt;
     private int randomValue;
 
+    [Header("LevelUI")] 
+    public GameObject BG;
+
     [Header("PlayerDataUI")] 
     public TextMeshProUGUI ClassTxt;
     public TextMeshProUGUI NameTxt;
@@ -43,6 +46,8 @@ public class GameManager : MonoBehaviour
 
     [Header("ItemDataUI")] 
     public GameObject SpecialRoomObject;
+    public GameObject ShopPanel;
+    public GameObject RedDoorPanel;
 
     [Header("TokenUI")]
     public GameObject tokenGrid;
@@ -60,6 +65,11 @@ public class GameManager : MonoBehaviour
         displayRoomDescTxt.SetText(currentRoom.description);
 
         map = player.playerMap;
+
+        if (player.IsSecondLevel())
+        {
+            BG.GetComponent<Image>().sprite = Resources.Load<Sprite>("Art/BackGrounds/WalkingBG2");
+        }
 
         UpdatePlayerStats();
         
@@ -82,14 +92,30 @@ public class GameManager : MonoBehaviour
             SpecialRoomObject.SetActive(true);
             if (currentRoom.roomName == "Shop Keeper")
             {
+                ShopPanel.SetActive(true);
                 SpecialRoomObject.GetComponent<Image>().sprite = specialRoom.npcSprite;
                 sellButton.gameObject.SetActive(true);
+            }
+
+            if (currentRoom.roomName == "Red Door")
+            {
+                SpecialRoomObject.GetComponent<Image>().sprite = specialRoom.npcSprite;
+                if (player.GetSpecificToken("RedKey"))
+                {
+                    RedDoorPanel.SetActive(true);
+                }
+                else
+                {
+                    Debug.Log("Player doesnt have the token!");
+                }
             }
         }
         else
         {
+            RedDoorPanel.SetActive(false);
+            ShopPanel.SetActive(false);
             sellButton.gameObject.SetActive(false);
-            TriggerCombat();
+            //TriggerCombat();
         }
     }
     
@@ -247,6 +273,16 @@ public class GameManager : MonoBehaviour
         ManaTxt.SetText("Mana: " + player.GetMana());
         healthPotsTxt.SetText(player.GetHealthPotions().ToString());
         manaPotsTxt.SetText(player.GetManaPotions().ToString());
+    }
+
+    public void EnterLevel2()
+    {
+        Level2 map2 = new Level2();
+        player.SetMap(map2);
+        player.SetDungeonLevel(map2.map);
+        player.col = 0;
+        player.row = 0;
+        SceneManager.LoadScene("Game");
     }
 
 }

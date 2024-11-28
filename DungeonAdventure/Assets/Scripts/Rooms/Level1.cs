@@ -23,16 +23,17 @@ public class Level1 : Map
         Room lavaPool = new Room("Lava Pool", "The heat here is intense, and lava bubbles dangerously.");
         Room caveBeastLair = new Room("Cave Beast's Lair", "The final challenge lies ahead: a ferocious beast guards this room.");
         Room shopkeeper = new SpecialRoom("Shop Keeper", "You entered the shop!", Resources.Load<Sprite>("Art/NPC/ShopKeeper"));
-        Room lockedRedDoor = new Room("Red Door", "There is a big red door here. Seems locked.");
+        Room lockedRedDoor = new SpecialRoom("Red Door", "There is a big red door here. Seems locked.", Resources.Load<Sprite>("Art/NPC/LockedRedDoor"));
 
         map = new Room[,] {
             {entranceTunnel, echoingCavern, crystalChamber, ancientShrine},
             {undergroundStream, mushroomGrove, rockfallTrap, chasm},
             {batColony, collapsedTunnel, spiderNest, lavaPool},
-            {hiddenAlcove, subterraneanLake, lockedRedDoor, shopkeeper}
+            {hiddenAlcove, lockedRedDoor, subterraneanLake, shopkeeper}
         };
         
         maxHeight = map.GetLength(0);
         maxWidth = map.GetLength(1);
+        levelName = "Level1";
     }
 }

@@ -27,7 +27,7 @@ public class BuyButton : MonoBehaviour
         {
             player.addHealthPotion();
             player.playerLoseGold(cost);
-            playerGold.SetText(player.GetGold().ToString());
+            playerGold.SetText("Gold: " + player.GetGold());
             playerHealthPots.SetText(player.GetHealthPotions().ToString());
         }
     }
@@ -38,7 +38,7 @@ public class BuyButton : MonoBehaviour
         {
             player.addManaPotion();
             player.playerLoseGold(cost);
-            playerGold.SetText(player.GetGold().ToString());
+            playerGold.SetText("Gold: " + player.GetGold());
             playerManaPots.SetText(player.GetManaPotions().ToString());
         }
     }
@@ -49,7 +49,7 @@ public class BuyButton : MonoBehaviour
         {
             player.playerLoseGold(cost);
             player.AddToken(redKey);
-            playerGold.SetText(player.GetGold().ToString());
+            playerGold.SetText("Gold: " + player.GetGold());
             CheckForPlayerRedKey();
         }
         

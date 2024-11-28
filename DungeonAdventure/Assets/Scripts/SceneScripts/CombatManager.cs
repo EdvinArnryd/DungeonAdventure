@@ -340,7 +340,8 @@ public class CombatManager : MonoBehaviour
     {
         combatOverPanel.SetActive(true);
         Image panelImage = combatOverPanel.GetComponent<Image>();
-        combatOverTxt.SetText("You died!");
+        combatOverTxt.SetText("GAME OVER!");
+        lootTxt.SetText("");
     
         if (panelImage != null)
         {
@@ -376,7 +377,7 @@ public class CombatManager : MonoBehaviour
         {
             panelImage.color = new Color(0,0,0,0.5f);
         }
-        lootTxt.SetText("XP: " + xp + "\nGold: " + gold + "\nLoot: " + lootName); // <-- This line
+        lootTxt.SetText("XP: " + xp + "\nGold: " + gold + "\nLoot: " + lootName);
         player.AddGold(gold);
         player.AddXP(xp);
         combatOverContinue.gameObject.SetActive(true);
@@ -394,7 +395,7 @@ public class CombatManager : MonoBehaviour
 
     public void ContinueGameOver()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void ContinueWin()

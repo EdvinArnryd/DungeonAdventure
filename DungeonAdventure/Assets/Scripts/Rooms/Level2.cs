@@ -22,15 +22,18 @@ public class Level2 : Map
         Room voidGateway = new Room("Void Gateway", "A swirling portal humming with dangerous power.");
         Room hauntedLibrary = new Room("Haunted Library", "Dusty tomes whisper and attack if disturbed.");
         Room demonsLair = new Room("Demon’s Lair", "A powerful demon resides here, surrounded by flames and shadows.");
+        Room shopkeeper = new SpecialRoom("Shop Keeper", "You entered the shop!", Resources.Load<Sprite>("Art/NPC/ShopKeeper"));
+        Room dragonsLair = new SpecialRoom("Dragon's Lair", "The dragon rests inside. Do you have what it takes?", Resources.Load<Sprite>("Art/NPC/ShopKeeper"));
 
         map = new Room[,] {
             {shadowedHall, ghostlyCorridor, hallOfChains, cursedAltar},
             {echoingChamber, bloodStainedRoom, tortureChamber, rottingCatacombs},
             {etherealBridge, pitOfDespair, mirrorMaze, chamberOfSpikes},
-            {hauntedLibrary, voidGateway, demonsLair, null}
+            {hauntedLibrary, voidGateway, demonsLair, shopkeeper}
         };
 
         maxHeight = map.GetLength(0);
         maxWidth = map.GetLength(1);
+        levelName = "Level2";
     }
 }
