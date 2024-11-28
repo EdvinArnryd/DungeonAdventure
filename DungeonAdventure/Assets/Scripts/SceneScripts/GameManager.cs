@@ -49,20 +49,17 @@ public class GameManager : MonoBehaviour
     public GameObject tokenSlot;
     
     private Room currentRoom;
+    private Room[,] playerDungeonLevel;
     
     void Start()
     {
-        // Initialize the map and player
-        map = new Map();
-        map.Initialize();
-        
-        // player = new Player();
-        row = 0;
-        col = 0;
-        
-        currentRoom = map.map[col, row];
+        playerDungeonLevel = player.GetDungeonLevel();
+
+        currentRoom = playerDungeonLevel[player.col, player.row];
         displayRoomTxt.SetText(currentRoom.roomName);
         displayRoomDescTxt.SetText(currentRoom.description);
+
+        map = player.playerMap;
 
         UpdatePlayerStats();
         
@@ -74,7 +71,7 @@ public class GameManager : MonoBehaviour
 
     void UpdateRoomDisplay()
     {
-        currentRoom = map.map[col, row];
+        currentRoom = playerDungeonLevel[player.col, player.row];
         displayRoomTxt.SetText(currentRoom.roomName);
         displayRoomDescTxt.SetText(currentRoom.description);
         SpecialRoomObject.SetActive(false);
@@ -98,14 +95,14 @@ public class GameManager : MonoBehaviour
     
     public void walkNorth()
     {
-        if (col <= 0)
+        if (player.col <= 0)
         {
-            col = 0;
+            player.col = 0;
             walkingDirectionTxt.SetText("Can't walk here");
         }
         else
         {
-            col--;
+            player.col--;
             walkingDirectionTxt.SetText("You walked north");
             UpdateRoomDisplay();
         }
@@ -113,14 +110,14 @@ public class GameManager : MonoBehaviour
     
     public void walkSouth()
     {
-        if (col >= map.maxHeight -1)
+        if (player.col >= map.maxHeight -1)
         {
-            col = map.maxHeight -1;
+            player.col = map.maxHeight -1;
             walkingDirectionTxt.SetText("Can't walk here");
         }
         else
         {
-            col++;
+            player.col++;
             walkingDirectionTxt.SetText("You walked south");
             UpdateRoomDisplay();
         }
@@ -128,14 +125,14 @@ public class GameManager : MonoBehaviour
     
     public void walkEast()
     {
-        if (row >= map.maxWidth -1)
+        if (player.row >= map.maxWidth -1)
         {
-            row = map.maxWidth -1;
+            player.row = map.maxWidth -1;
             walkingDirectionTxt.SetText("Can't walk here");
         }
         else
         {
-            row++;
+            player.row++;
             walkingDirectionTxt.SetText("You walked east");
             UpdateRoomDisplay();
         }
@@ -143,14 +140,14 @@ public class GameManager : MonoBehaviour
     
     public void walkWest()
     {
-        if (row <= 0)
+        if (player.row <= 0)
         {
-            row = 0;
+            player.row = 0;
             walkingDirectionTxt.SetText("Can't walk here");
         }
         else
         {
-            row--;
+            player.row--;
             walkingDirectionTxt.SetText("You walked west");
             UpdateRoomDisplay();
         }

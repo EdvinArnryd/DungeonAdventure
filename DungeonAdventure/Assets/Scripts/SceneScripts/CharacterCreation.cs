@@ -12,9 +12,11 @@ public class CharacterCreation : MonoBehaviour
     public PlayerData player;
     public Button continueButton;
     public TMP_InputField inputField;
+    private Level1 level1;
 
     public void Start()
     {
+        level1 = new Level1();
         player.ResetData();
     }
 
@@ -51,6 +53,8 @@ public class CharacterCreation : MonoBehaviour
     public void ContinueButton()
     {
         player.SetName(inputField.text);
+        player.SetMap(level1);
+        player.SetDungeonLevel(level1.map);
         SceneManager.LoadScene("Game");
     }
     

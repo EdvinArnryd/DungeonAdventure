@@ -20,6 +20,11 @@ public class PlayerData : ScriptableObject
     public HeroClass heroClass;
     private string playerName;
 
+    public int col;
+    public int row;
+    private Room[,] dungeonLevel;
+    public Map playerMap;
+
     public event Action OnLevelUp;
     
     
@@ -48,15 +53,51 @@ public class PlayerData : ScriptableObject
         strength = 0;
         intelligence = 0;
         xpThreshold = 10;
+        row = 0;
+        col = 0;
+        
+        // Test data
         Sword sword = new Sword();
         Axe axe = new Axe();
-        
         inventory.Add(sword);
         inventory.Add(axe);
         inventory.Add(sword);
 
-        // row = 1;
-        // col = 1;
+    }
+
+    // public void SetCol(int newCol)
+    // {
+    //     col = newCol;
+    // }
+    //
+    // public int GetCol()
+    // {
+    //     return col;
+    // }
+    //
+    // public void SetRow(int newRow)
+    // {
+    //     row = newRow;
+    // }
+    //
+    // public int GetRow()
+    // {
+    //     return row;
+    // }
+
+    public Room[,] GetDungeonLevel()
+    {
+        return dungeonLevel;
+    }
+
+    public void SetMap(Map map)
+    {
+        playerMap = map;
+    }
+
+    public void SetDungeonLevel(Room[,] newDungeonLevel)
+    {
+        dungeonLevel = newDungeonLevel;
     }
 
     public int GetHealthPotions()
