@@ -21,6 +21,9 @@ public class CombatManager : MonoBehaviour
     public TextMeshProUGUI actionField;
     public Image playerImage;
     public Image enemyImage;
+
+    [Header("LevelUp")] 
+    public Image BG;
     
     public GameObject combatOverPanel;
     public TextMeshProUGUI combatOverTxt;
@@ -51,35 +54,27 @@ public class CombatManager : MonoBehaviour
     public Button continueButton;
     
     private Enemy currentEnemy;
-    private List<Enemy> enemies;
-    private Skeleton skeleton;
-    private Zombie zombie;
-    private Imp imp;
-    private int randomValue;
     private LootSystem lootSystem;
+    private EnemySpawner enemySpawner;
     
     void Start()
     {
         lootSystem = new LootSystem();
         lootSystem.Initialize();
-        //Creating all enemies
+        enemySpawner = new EnemySpawner();
+        enemySpawner.Initialize();
         currentEnemy = new Enemy();
-        skeleton = new Skeleton();
-        zombie = new Zombie();
-        imp = new Imp();
         
-        skeleton.Initialize();
-        zombie.Initialize();
-        imp.Initialize();
-        
-        enemies = new List<Enemy>();
-        enemies.Add(skeleton);
-        enemies.Add(zombie);
-        enemies.Add(imp);
-        
-        //Randomizing which enemy will be in combat
-        randomValue = Random.Range(0, enemies.Count);
-        currentEnemy = enemies[randomValue];
+        // Player DungeonLevel logic
+        if (player.IsSecondLevel())
+        {
+            BG.sprite = Resources.Load<Sprite>("Art/BackGrounds/CombatBG2");
+            currentEnemy = enemySpawner.GetRandomEnemy2();
+        }
+        else
+        {
+            currentEnemy = enemySpawner.GetRandomEnemy1();
+        }
         
         enemyName.SetText(currentEnemy.type);
         playerName.SetText(player.GetName());
@@ -116,7 +111,7 @@ public class CombatManager : MonoBehaviour
     {
         actionField.SetText(player.GetName() + " attacked!");
         yield return new WaitForSeconds(2f);
-        randomValue = Random.Range(1, 7);
+        int randomValue = Random.Range(1, 7);
         if (randomValue == 6)
         {
             // Crit
@@ -361,7 +356,14 @@ public class CombatManager : MonoBehaviour
         combatOverTxt.SetText("You won!");
         
         Item loot = new Item();
-        loot = lootSystem.LootDrop();
+        if (player.IsSecondLevel())
+        {
+            loot = lootSystem.LootDropLevel2();
+        }
+        else
+        {
+            loot = lootSystem.LootDrop();
+        }
         string lootName;
         if (loot == null)
         {

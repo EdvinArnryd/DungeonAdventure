@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Imp : Enemy
 {
-    // Start is called before the first frame update
-    public void Initialize()
+    public Imp()
     {
         type = "Imp";
         DMG = 1;
@@ -14,9 +13,4 @@ public class Imp : Enemy
         XP = 5;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

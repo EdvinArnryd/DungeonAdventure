@@ -43,7 +43,7 @@ public class PlayerData : ScriptableObject
         XP = 0;
         maxMana = 15;
         Mana = maxMana;
-        maxHP = -10;
+        maxHP = 15;
         HP = maxHP;
         healthPotions = 2;
         manaPotions = 2;
