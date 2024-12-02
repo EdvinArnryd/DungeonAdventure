@@ -48,10 +48,15 @@ public class GameManager : MonoBehaviour
     public GameObject SpecialRoomObject;
     public GameObject ShopPanel;
     public GameObject RedDoorPanel;
+    public GameObject BlueDoorPanel;
+    public GameObject ShopPanel2;
 
     [Header("TokenUI")]
     public GameObject tokenGrid;
     public GameObject tokenSlot;
+    
+    [Header("AudioManager")]
+    public GameObject AudioManager;
     
     private Room currentRoom;
     private Room[,] playerDungeonLevel;
@@ -96,6 +101,13 @@ public class GameManager : MonoBehaviour
                 SpecialRoomObject.GetComponent<Image>().sprite = specialRoom.npcSprite;
                 sellButton.gameObject.SetActive(true);
             }
+            
+            if (currentRoom.roomName == "Shop Keeper2")
+            {
+                ShopPanel2.SetActive(true);
+                SpecialRoomObject.GetComponent<Image>().sprite = specialRoom.npcSprite;
+                sellButton.gameObject.SetActive(true);
+            }
 
             if (currentRoom.roomName == "Red Door")
             {
@@ -109,13 +121,28 @@ public class GameManager : MonoBehaviour
                     Debug.Log("Player doesnt have the token!");
                 }
             }
+            
+            if (currentRoom.roomName == "Blue Door")
+            {
+                SpecialRoomObject.GetComponent<Image>().sprite = specialRoom.npcSprite;
+                if (player.GetSpecificToken("BlueKey"))
+                {
+                    BlueDoorPanel.SetActive(true);
+                }
+                else
+                {
+                    Debug.Log("Player doesnt have the token!");
+                }
+            }
         }
         else
         {
+            BlueDoorPanel.SetActive(false);
+            ShopPanel2.SetActive(false);
             RedDoorPanel.SetActive(false);
             ShopPanel.SetActive(false);
             sellButton.gameObject.SetActive(false);
-            TriggerCombat();
+            //TriggerCombat();
         }
     }
     
@@ -224,6 +251,7 @@ public class GameManager : MonoBehaviour
             {
                 int itemIndex = i;
                 button.onClick.AddListener(() => ItemPressed(itemIndex));
+                button.onClick.AddListener(() => AudioManager.GetComponent<AudioManager>().PlayInventorySlotSound());
             }
             
             i++;
@@ -283,6 +311,11 @@ public class GameManager : MonoBehaviour
         player.col = 0;
         player.row = 0;
         SceneManager.LoadScene("Game");
+    }
+
+    public void EnterBossRoom()
+    {
+        SceneManager.LoadScene("BossRoom");
     }
 
 }

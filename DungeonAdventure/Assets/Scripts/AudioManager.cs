@@ -29,7 +29,14 @@ public class AudioManager : MonoBehaviour
     public AudioClip loseSound;
     public AudioClip levelUpSound;
 
-    
+    [Header("Item Inventory")] 
+    public AudioClip itemSlotSound;
+
+
+    public void PlayInventorySlotSound()
+    {
+        audioSource.PlayOneShot(itemSlotSound);
+    }
     public void PlayWinSound()
     {
         audioSource.PlayOneShot(winSound);

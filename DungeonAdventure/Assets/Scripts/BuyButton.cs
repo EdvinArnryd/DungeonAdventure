@@ -10,6 +10,7 @@ public class BuyButton : MonoBehaviour
     public TextMeshProUGUI costTxt;
     public PlayerData player;
     private RedKey redKey;
+    private BlueKey blueKey;
     public Button redKeyButton;
     public TextMeshProUGUI playerGold;
     public TextMeshProUGUI playerHealthPots;
@@ -17,8 +18,10 @@ public class BuyButton : MonoBehaviour
     void Start()
     {
         redKey = new RedKey();
+        blueKey = new BlueKey();
         costTxt.SetText(cost.ToString());
         CheckForPlayerRedKey();
+        CheckForPlayerBlueKey();
     }
 
     public void BuyHealthPotion()
@@ -58,6 +61,26 @@ public class BuyButton : MonoBehaviour
     public void CheckForPlayerRedKey()
     {
         if (player.GetSpecificToken(redKey))
+        {
+            redKeyButton.interactable = false;
+        }
+    }
+    
+    public void BuyBlueKey()
+    {
+        if (player.GetGold() >= cost)
+        {
+            player.playerLoseGold(cost);
+            player.AddToken(redKey);
+            playerGold.SetText("Gold: " + player.GetGold());
+            CheckForPlayerBlueKey();
+        }
+        
+    }
+    
+    public void CheckForPlayerBlueKey()
+    {
+        if (player.GetSpecificToken(blueKey))
         {
             redKeyButton.interactable = false;
         }
