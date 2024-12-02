@@ -47,6 +47,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 2676478282170526272}
   buttonClickSound: {fileID: 8300000, guid: 63f683205caf82541bee6846d1610680, type: 3}
+  sellButtonSound: {fileID: 0}
+  buyButtonSound: {fileID: 0}
+  openDoorSound: {fileID: 8300000, guid: 8577bea70187b794fb7608f75ffa5f50, type: 3}
+  attackHitSound: {fileID: 8300000, guid: ad0c01974875f8342b29906518c88ce5, type: 3}
+  usePotionSound: {fileID: 8300000, guid: d3fe86cd1782b5b4cbad7abe0931a81f, type: 3}
+  useSpellSound: {fileID: 8300000, guid: a2fd322c458c81a4bb329deddc9ad55c, type: 3}
+  enemyMissSound: {fileID: 0}
+  enemyAttackSound: {fileID: 8300000, guid: ad0c01974875f8342b29906518c88ce5, type: 3}
+  enemyHealSound: {fileID: 8300000, guid: d3fe86cd1782b5b4cbad7abe0931a81f, type: 3}
+  enemyGruntSound: {fileID: 8300000, guid: 0d8161d7244555b4f89a07b28e886c4b, type: 3}
+  winSound: {fileID: 8300000, guid: a0d28599722b77a40849f645cc06eb95, type: 3}
+  loseSound: {fileID: 8300000, guid: 2a4ca9fbc1590c945a425f646822ea82, type: 3}
+  levelUpSound: {fileID: 8300000, guid: 9477348168c64dc4c99db1f1eda643bd, type: 3}
 --- !u!82 &2676478282170526272
 AudioSource:
   m_ObjectHideFlags: 0

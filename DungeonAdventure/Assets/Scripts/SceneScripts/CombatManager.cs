@@ -53,9 +53,13 @@ public class CombatManager : MonoBehaviour
     public TextMeshProUGUI intelligenceIncreaseTxt;
     public Button continueButton;
     
+    [Header("AudioManager")]
+    public GameObject AudioManager;
+    
     private Enemy currentEnemy;
     private LootSystem lootSystem;
     private EnemySpawner enemySpawner;
+    
     
     void Start()
     {
@@ -86,6 +90,8 @@ public class CombatManager : MonoBehaviour
         manaPotions.SetText(player.GetManaPotions().ToString());
 
         player.OnLevelUp += HandleLevelUp;
+        
+        AudioManager.GetComponent<AudioManager>().PlayEnemyGrunt();
     }
 
     private void OnDestroy()
@@ -111,6 +117,7 @@ public class CombatManager : MonoBehaviour
     {
         actionField.SetText(player.GetName() + " attacked!");
         yield return new WaitForSeconds(2f);
+        AudioManager.GetComponent<AudioManager>().PlayAttackHitSound();
         int randomValue = Random.Range(1, 7);
         if (randomValue == 6)
         {
@@ -170,6 +177,7 @@ public class CombatManager : MonoBehaviour
         }
         else
         {
+            AudioManager.GetComponent<AudioManager>().PlayUseSpellSound();
             player.UsedSpell();
             currentEnemy.enemyTakeDamage(spellDamage);
             UpdateUI();
@@ -201,6 +209,7 @@ public class CombatManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         if (player.useHealthPotion(5))
         {
+            AudioManager.GetComponent<AudioManager>().PlayUsePotionSound();
             UpdateUI();
             healthPotions.SetText(player.GetHealthPotions().ToString());
             actionField.SetText("Player used health potion!");
@@ -228,6 +237,7 @@ public class CombatManager : MonoBehaviour
 
         if (player.useManaPotion(6))
         {
+            AudioManager.GetComponent<AudioManager>().PlayUsePotionSound();
             UpdateUI();
             actionField.SetText("Player used mana potion!");
             manaPotions.SetText(player.GetManaPotions().ToString());
@@ -281,6 +291,7 @@ public class CombatManager : MonoBehaviour
         int randomValue = Random.Range(1, 7);
         if (randomValue == 6)
         {
+            AudioManager.GetComponent<AudioManager>().PlayEnemyAttackSound();
             // CRIT
             actionField.SetText("Enemy got a lucky hit!");
             yield return new WaitForSeconds(2f);
@@ -298,11 +309,13 @@ public class CombatManager : MonoBehaviour
         }
         else if (randomValue == 5)
         {
+            AudioManager.GetComponent<AudioManager>().PlayEnemyMissSound();
             // MISS
             actionField.SetText("Enemy missed!");
         }
         else
         {
+            AudioManager.GetComponent<AudioManager>().PlayEnemyAttackSound();
             // NORMAL ATTACK
             player.playerTakeDamage(currentEnemy.DMG);
             UpdateUI();
@@ -326,6 +339,7 @@ public class CombatManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         currentEnemy.healEnemy(3);
         UpdateUI();
+        AudioManager.GetComponent<AudioManager>().PlayEnemyHealSound();
         actionField.SetText("Enemy healed themselves!");
         yield return new WaitForSeconds(2f);
         WaitingForPlayer();
@@ -333,6 +347,7 @@ public class CombatManager : MonoBehaviour
 
     private void PlayerDied()
     {
+        AudioManager.GetComponent<AudioManager>().PlayLoseSound();
         combatOverPanel.SetActive(true);
         Image panelImage = combatOverPanel.GetComponent<Image>();
         combatOverTxt.SetText("GAME OVER!");
@@ -348,6 +363,7 @@ public class CombatManager : MonoBehaviour
 
     private void EnemyDied()
     {
+        AudioManager.GetComponent<AudioManager>().PlayWinSound();
         int randomXPGold = Random.Range(1, 10);
         int gold = randomXPGold + 4;
         int xp = (randomXPGold + 2) * 2;
@@ -387,6 +403,7 @@ public class CombatManager : MonoBehaviour
     
     private void HandleLevelUp()
     {
+        AudioManager.GetComponent<AudioManager>().PlayLevelUpSound();
         levelUpPopUp.SetActive(true);
         levelUpText.SetText(player.GetLevel().ToString());
         healthIncreaseTxt.SetText(player.heroClass.healthGrowth.ToString());

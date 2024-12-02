@@ -3692,10 +3692,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2676478282170526272, guid: 83aa8a61cca6a8d4cb8d316b57730b6a, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6c1fcbc89e0694a46ac411f5d84a7fe7, type: 3}
     - target: {fileID: 5132360489604005700, guid: 83aa8a61cca6a8d4cb8d316b57730b6a, type: 3}
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8054863994607747074, guid: 83aa8a61cca6a8d4cb8d316b57730b6a, type: 3}
+      propertyPath: useSpellSound
+      value: 
+      objectReference: {fileID: 8300000, guid: a2fd322c458c81a4bb329deddc9ad55c, type: 3}
     - target: {fileID: 8054863994607747074, guid: 83aa8a61cca6a8d4cb8d316b57730b6a, type: 3}
       propertyPath: buyButtonSound
       value: 
