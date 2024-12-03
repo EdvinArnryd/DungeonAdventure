@@ -552,7 +552,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &189159698
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2966,6 +2966,7 @@ GameObject:
   - component: {fileID: 629569209}
   - component: {fileID: 629569208}
   - component: {fileID: 629569207}
+  - component: {fileID: 629569210}
   m_Layer: 5
   m_Name: ShopGrid
   m_TagString: Untagged
@@ -3057,6 +3058,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 629569205}
   m_CullTransparentMesh: 1
+--- !u!114 &629569210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629569205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ec5b457d3438ca4ca37d64dfb3f53f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPot: {fileID: 1755017822}
+  manaPot: {fileID: 857501602}
+  key: {fileID: 932329423}
+  player: {fileID: 11400000, guid: dc353e68cb3ffea478bad081283fb45a, type: 2}
 --- !u!1 &634649396
 GameObject:
   m_ObjectHideFlags: 0
@@ -3347,6 +3364,7 @@ GameObject:
   - component: {fileID: 671908633}
   - component: {fileID: 671908632}
   - component: {fileID: 671908631}
+  - component: {fileID: 671908634}
   m_Layer: 5
   m_Name: ShopGrid
   m_TagString: Untagged
@@ -3438,6 +3456,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 671908629}
   m_CullTransparentMesh: 1
+--- !u!114 &671908634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671908629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ec5b457d3438ca4ca37d64dfb3f53f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPot: {fileID: 1613497780}
+  manaPot: {fileID: 884124199}
+  key: {fileID: 1439757799}
+  player: {fileID: 11400000, guid: dc353e68cb3ffea478bad081283fb45a, type: 2}
 --- !u!1 &857501602
 GameObject:
   m_ObjectHideFlags: 0
@@ -3472,10 +3506,10 @@ RectTransform:
   - {fileID: 1551439262}
   m_Father: {fileID: 629569206}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 300, y: -150}
+  m_SizeDelta: {x: 200, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &857501604
 MonoBehaviour:
@@ -3496,6 +3530,7 @@ MonoBehaviour:
   playerGold: {fileID: 1431681359}
   playerHealthPots: {fileID: 574025771}
   playerManaPots: {fileID: 1208892667}
+  shopItems: {fileID: 629569205}
 --- !u!1 &884124199
 GameObject:
   m_ObjectHideFlags: 0
@@ -3554,6 +3589,7 @@ MonoBehaviour:
   playerGold: {fileID: 1431681359}
   playerHealthPots: {fileID: 574025771}
   playerManaPots: {fileID: 1208892667}
+  shopItems: {fileID: 671908629}
 --- !u!1 &915784406
 GameObject:
   m_ObjectHideFlags: 0
@@ -3590,8 +3626,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -495.8, y: 363.2}
-  m_SizeDelta: {x: -1787.5428, y: -725.1733}
+  m_AnchoredPosition: {x: -495.80005, y: 418.1571}
+  m_SizeDelta: {x: -1787.5428, y: -835.0874}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &915784408
 MonoBehaviour:
@@ -3689,10 +3725,10 @@ RectTransform:
   - {fileID: 1260651653}
   m_Father: {fileID: 629569206}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 500, y: -150}
+  m_SizeDelta: {x: 200, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &932329425
 MonoBehaviour:
@@ -3713,6 +3749,7 @@ MonoBehaviour:
   playerGold: {fileID: 1431681359}
   playerHealthPots: {fileID: 0}
   playerManaPots: {fileID: 0}
+  shopItems: {fileID: 629569205}
 --- !u!1 &950294413
 GameObject:
   m_ObjectHideFlags: 0
@@ -4208,7 +4245,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1000519111
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5192,7 +5229,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 932329425}
         m_TargetAssemblyTypeName: BuyButton, Assembly-CSharp
-        m_MethodName: BuyRedKey
+        m_MethodName: BuyBlueKey
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6220,6 +6257,7 @@ MonoBehaviour:
   playerGold: {fileID: 1431681359}
   playerHealthPots: {fileID: 0}
   playerManaPots: {fileID: 0}
+  shopItems: {fileID: 671908629}
 --- !u!1 &1441492200
 GameObject:
   m_ObjectHideFlags: 0
@@ -6382,7 +6420,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1467518278
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6633,6 +6671,8 @@ MonoBehaviour:
   SpecialRoomObject: {fileID: 189159697}
   ShopPanel: {fileID: 179475500}
   RedDoorPanel: {fileID: 972233973}
+  BlueDoorPanel: {fileID: 1467518277}
+  ShopPanel2: {fileID: 1000519110}
   tokenGrid: {fileID: 915784406}
   tokenSlot: {fileID: 2144788169902921307, guid: 003d8d378b2cdeb4488bf90be16cb377, type: 3}
   AudioManager: {fileID: 1205262159}
@@ -7121,6 +7161,7 @@ MonoBehaviour:
   playerGold: {fileID: 1431681359}
   playerHealthPots: {fileID: 574025771}
   playerManaPots: {fileID: 1208892667}
+  shopItems: {fileID: 671908629}
 --- !u!1 &1621010381
 GameObject:
   m_ObjectHideFlags: 0
@@ -8621,10 +8662,10 @@ RectTransform:
   - {fileID: 668815778}
   m_Father: {fileID: 629569206}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 100, y: -150}
+  m_SizeDelta: {x: 200, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1755017824
 MonoBehaviour:
@@ -8645,6 +8686,7 @@ MonoBehaviour:
   playerGold: {fileID: 1431681359}
   playerHealthPots: {fileID: 574025771}
   playerManaPots: {fileID: 1208892667}
+  shopItems: {fileID: 629569205}
 --- !u!1 &1759827443
 GameObject:
   m_ObjectHideFlags: 0

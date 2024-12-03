@@ -15,6 +15,8 @@ public class BuyButton : MonoBehaviour
     public TextMeshProUGUI playerGold;
     public TextMeshProUGUI playerHealthPots;
     public TextMeshProUGUI playerManaPots;
+
+    public GameObject shopItems;
     void Start()
     {
         redKey = new RedKey();
@@ -22,6 +24,7 @@ public class BuyButton : MonoBehaviour
         costTxt.SetText(cost.ToString());
         CheckForPlayerRedKey();
         CheckForPlayerBlueKey();
+        shopItems.GetComponent<ShopItems>().UpdateShopItems();
     }
 
     public void BuyHealthPotion()
@@ -32,6 +35,7 @@ public class BuyButton : MonoBehaviour
             player.playerLoseGold(cost);
             playerGold.SetText("Gold: " + player.GetGold());
             playerHealthPots.SetText(player.GetHealthPotions().ToString());
+            shopItems.GetComponent<ShopItems>().UpdateShopItems();
         }
     }
 
@@ -43,6 +47,7 @@ public class BuyButton : MonoBehaviour
             player.playerLoseGold(cost);
             playerGold.SetText("Gold: " + player.GetGold());
             playerManaPots.SetText(player.GetManaPotions().ToString());
+            shopItems.GetComponent<ShopItems>().UpdateShopItems();
         }
     }
 
@@ -54,6 +59,7 @@ public class BuyButton : MonoBehaviour
             player.AddToken(redKey);
             playerGold.SetText("Gold: " + player.GetGold());
             CheckForPlayerRedKey();
+            shopItems.GetComponent<ShopItems>().UpdateShopItems();
         }
         
     }
@@ -71,9 +77,10 @@ public class BuyButton : MonoBehaviour
         if (player.GetGold() >= cost)
         {
             player.playerLoseGold(cost);
-            player.AddToken(redKey);
+            player.AddToken(blueKey);
             playerGold.SetText("Gold: " + player.GetGold());
             CheckForPlayerBlueKey();
+            shopItems.GetComponent<ShopItems>().UpdateShopItems();
         }
         
     }

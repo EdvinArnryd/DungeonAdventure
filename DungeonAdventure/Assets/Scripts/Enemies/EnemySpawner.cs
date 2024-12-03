@@ -16,11 +16,8 @@ public class EnemySpawner
         enemiesLevel1.Add(new Skeleton());
         enemiesLevel1.Add(new Zombie());
         
-        enemiesLevel2.Add(new Basilisk());
         enemiesLevel2.Add(new Demon());
         enemiesLevel2.Add(new Ghoul());
-        enemiesLevel2.Add(new Minotaur());
-        enemiesLevel2.Add(new Serpent());
         enemiesLevel2.Add(new Vampire());
     }
 
