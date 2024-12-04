@@ -4,13 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
-    public void LoadScene(string sceneName)
+    public GameObject levelLoader;
+    public void LoadScene()
     {
-        SceneManager.LoadScene(sceneName);
-    }
-
-    public void LoadCombatScene()
-    {
-        SceneManager.LoadScene("Combat");
+        //SceneManager.LoadScene(sceneName);
+        levelLoader.GetComponent<LoadScene>().LoadNextScene("CharacterCreation");
     }
 }
