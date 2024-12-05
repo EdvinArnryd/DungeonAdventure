@@ -14,6 +14,8 @@ public class CharacterCreation : MonoBehaviour
     public TMP_InputField inputField;
     private Level1 level1;
 
+    public GameObject levelLoader;
+
     public void Start()
     {
         level1 = new Level1();
@@ -55,7 +57,8 @@ public class CharacterCreation : MonoBehaviour
         player.SetName(inputField.text);
         player.SetMap(level1);
         player.SetDungeonLevel(level1.map);
-        SceneManager.LoadScene("Game");
+        //SceneManager.LoadScene("Game");
+        levelLoader.GetComponent<LoadScene>().LoadNextScene("Game");
     }
     
 }

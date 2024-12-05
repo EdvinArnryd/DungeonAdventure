@@ -1461,6 +1461,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 377679018}
   m_CullTransparentMesh: 1
+--- !u!1 &412873411 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2079256428459922480, guid: 6c6395bea7b35054ea39ee2a04432bcf, type: 3}
+  m_PrefabInstance: {fileID: 1599733776}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &421298254
 GameObject:
   m_ObjectHideFlags: 0
@@ -6682,6 +6687,7 @@ MonoBehaviour:
   tokenGrid: {fileID: 915784406}
   tokenSlot: {fileID: 2144788169902921307, guid: 003d8d378b2cdeb4488bf90be16cb377, type: 3}
   AudioManager: {fileID: 1205262159}
+  levelLoader: {fileID: 412873411}
 --- !u!4 &1514583646
 Transform:
   m_ObjectHideFlags: 0

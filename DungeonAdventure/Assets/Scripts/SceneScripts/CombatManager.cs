@@ -55,6 +55,9 @@ public class CombatManager : MonoBehaviour
     
     [Header("AudioManager")]
     public GameObject AudioManager;
+
+    [Header("LevelLoader")]
+    public GameObject levelLoader;
     
     private Enemy currentEnemy;
     private LootSystem lootSystem;
@@ -414,12 +417,12 @@ public class CombatManager : MonoBehaviour
 
     public void ContinueGameOver()
     {
-        SceneManager.LoadScene("MainMenu");
+        levelLoader.GetComponent<LoadScene>().LoadNextScene("MainMenu");
     }
 
     public void ContinueWin()
     {
-        SceneManager.LoadScene("Game");
+        levelLoader.GetComponent<LoadScene>().LoadNextScene("Game");
     }
 
     public void ContinueLevelUp()

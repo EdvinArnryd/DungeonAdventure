@@ -57,6 +57,9 @@ public class GameManager : MonoBehaviour
     
     [Header("AudioManager")]
     public GameObject AudioManager;
+
+    [Header("LevelLoader")] 
+    public GameObject levelLoader;
     
     private Room currentRoom;
     private Room[,] playerDungeonLevel;
@@ -142,7 +145,7 @@ public class GameManager : MonoBehaviour
             RedDoorPanel.SetActive(false);
             ShopPanel.SetActive(false);
             sellButton.gameObject.SetActive(false);
-            //TriggerCombat();
+            TriggerCombat();
         }
     }
     
@@ -211,7 +214,7 @@ public class GameManager : MonoBehaviour
         randomValue = Random.Range(1, 5);
         if (randomValue == 4)
         {
-            SceneManager.LoadScene("Combat");
+            levelLoader.GetComponent<LoadScene>().LoadNextScene("Combat");
         }
     }
 
@@ -310,12 +313,12 @@ public class GameManager : MonoBehaviour
         player.SetDungeonLevel(map2.map);
         player.col = 0;
         player.row = 0;
-        SceneManager.LoadScene("Game");
+        levelLoader.GetComponent<LoadScene>().LoadNextScene("Game");
     }
 
     public void EnterBossRoom()
     {
-        SceneManager.LoadScene("BossRoom");
+        levelLoader.GetComponent<LoadScene>().LoadNextScene("BossRoom");
     }
 
 }
