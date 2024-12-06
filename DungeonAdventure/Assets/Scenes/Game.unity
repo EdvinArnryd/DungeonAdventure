@@ -6658,6 +6658,10 @@ MonoBehaviour:
   displayRoomTxt: {fileID: 1095710005}
   displayRoomDescTxt: {fileID: 1621010383}
   BG: {fileID: 1132826843}
+  north: {fileID: 1028542682}
+  west: {fileID: 421298256}
+  east: {fileID: 212411190}
+  south: {fileID: 2035423640}
   ClassTxt: {fileID: 1912919366}
   NameTxt: {fileID: 1825956689}
   HealthTxt: {fileID: 950294415}

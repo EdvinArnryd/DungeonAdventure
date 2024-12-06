@@ -16,6 +16,12 @@ public class GameManager : MonoBehaviour
     [Header("LevelUI")] 
     public GameObject BG;
 
+    [Header("ButtonRef")] 
+    public Button north;
+    public Button west;
+    public Button east;
+    public Button south;
+
     [Header("PlayerDataUI")] 
     public TextMeshProUGUI ClassTxt;
     public TextMeshProUGUI NameTxt;
@@ -214,6 +220,10 @@ public class GameManager : MonoBehaviour
         randomValue = Random.Range(1, 5);
         if (randomValue == 4)
         {
+            north.interactable = false;
+            south.interactable = false;
+            east.interactable = false;
+            west.interactable = false;
             levelLoader.GetComponent<LoadScene>().LoadNextScene("Combat");
         }
     }
