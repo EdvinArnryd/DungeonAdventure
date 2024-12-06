@@ -11,6 +11,7 @@ public class Imp : Enemy
         maxHP = 6;
         HP = maxHP;
         XP = 5;
+        sprite = Resources.Load<Sprite>("Art/Enemies/Imp");
     }
 
 }

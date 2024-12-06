@@ -21,6 +21,7 @@ public class CombatManager : MonoBehaviour
     public TextMeshProUGUI actionField;
     public Image playerImage;
     public Image enemyImage;
+    public TextMeshProUGUI enemyDMG;
 
     [Header("LevelUp")] 
     public Image BG;
@@ -83,7 +84,11 @@ public class CombatManager : MonoBehaviour
             currentEnemy = enemySpawner.GetRandomEnemy1();
         }
         
+        // Set enemy stats
         enemyName.SetText(currentEnemy.type);
+        enemyImage.sprite = currentEnemy.sprite;
+        enemyDMG.SetText(currentEnemy.DMG.ToString());
+        
         playerName.SetText(player.GetName());
         UpdateUI();
 

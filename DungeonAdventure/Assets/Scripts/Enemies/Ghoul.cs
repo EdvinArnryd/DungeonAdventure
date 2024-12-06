@@ -11,5 +11,6 @@ public class Ghoul : Enemy
         maxHP = 28;
         HP = maxHP;
         XP = 17;
+        sprite = Resources.Load<Sprite>("Art/Enemies/Abomination");
     }
 }

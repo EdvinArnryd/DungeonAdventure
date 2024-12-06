@@ -12,5 +12,6 @@ public class Zombie : Enemy
         maxHP = 12;
         HP = maxHP;
         XP = 10;
+        sprite = Resources.Load<Sprite>("Art/Enemies/ZombieDA");
     }
 }

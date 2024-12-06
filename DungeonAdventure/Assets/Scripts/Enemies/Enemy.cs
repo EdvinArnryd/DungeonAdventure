@@ -11,6 +11,7 @@ public class Enemy
     public int HP;
     public int maxHP;
     public int XP;
+    public Sprite sprite;
     
     public void healEnemy(int addedHealth)
     {

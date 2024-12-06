@@ -11,5 +11,6 @@ public class Skeleton : Enemy
         maxHP = 10;
         HP = maxHP;
         XP = 8;
+        sprite = Resources.Load<Sprite>("Art/Enemies/SkeletonDA");
     }
 }

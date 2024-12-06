@@ -11,5 +11,6 @@ public class Demon : Enemy
         maxHP = 30;
         HP = maxHP;
         XP = 20;
+        sprite = Resources.Load<Sprite>("Art/Enemies/DemonDA");
     }
 }
