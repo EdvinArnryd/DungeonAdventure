@@ -17,8 +17,10 @@ public class EnemySpawner
         enemiesLevel1.Add(new Zombie());
         
         enemiesLevel2.Add(new Demon());
-        enemiesLevel2.Add(new Ghoul());
-        enemiesLevel2.Add(new Vampire());
+        enemiesLevel2.Add(new Abomination());
+        enemiesLevel2.Add(new CursedKnight());
+        
+        
     }
 
     public Enemy GetRandomEnemy1()
@@ -37,6 +39,12 @@ public class EnemySpawner
         Enemy returningEnemy = enemiesLevel2[random];
 
         return returningEnemy;
+    }
+
+    public Enemy SpawnBoss()
+    {
+        Enemy dragon = new Dragon();
+        return dragon;
     }
 
 }

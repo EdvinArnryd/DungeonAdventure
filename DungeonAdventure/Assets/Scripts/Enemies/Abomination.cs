@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ghoul : Enemy
+public class Abomination : Enemy
 {
-    public Ghoul()
+    public Abomination()
     {
-        type = "Ghoul";
-        DMG = 10;
-        maxHP = 28;
+        type = "Abomination";
+        DMG = 14;
+        maxHP = 34;
         HP = maxHP;
-        XP = 17;
+        XP = 25;
         sprite = Resources.Load<Sprite>("Art/Enemies/Abomination");
     }
 }

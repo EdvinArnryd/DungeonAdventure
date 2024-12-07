@@ -58,8 +58,8 @@ public class BuyButton : MonoBehaviour
             player.playerLoseGold(cost);
             player.AddToken(redKey);
             playerGold.SetText("Gold: " + player.GetGold());
-            CheckForPlayerRedKey();
             shopItems.GetComponent<ShopItems>().UpdateShopItems();
+            CheckForPlayerRedKey();
         }
         
     }
@@ -69,6 +69,8 @@ public class BuyButton : MonoBehaviour
         if (player.GetSpecificToken(redKey))
         {
             redKeyButton.interactable = false;
+            redKeyButton.interactable = false;
+            Debug.Log("Redkey checked");
         }
     }
     
@@ -79,10 +81,9 @@ public class BuyButton : MonoBehaviour
             player.playerLoseGold(cost);
             player.AddToken(blueKey);
             playerGold.SetText("Gold: " + player.GetGold());
-            CheckForPlayerBlueKey();
             shopItems.GetComponent<ShopItems>().UpdateShopItems();
+            CheckForPlayerBlueKey();
         }
-        
     }
     
     public void CheckForPlayerBlueKey()
@@ -92,6 +93,4 @@ public class BuyButton : MonoBehaviour
             redKeyButton.interactable = false;
         }
     }
-
-
 }

@@ -79,9 +79,13 @@ public class CombatManager : MonoBehaviour
             BG.sprite = Resources.Load<Sprite>("Art/BackGrounds/CombatBG2");
             currentEnemy = enemySpawner.GetRandomEnemy2();
         }
-        else
+        else if(player.IsFirstLevel())
         {
             currentEnemy = enemySpawner.GetRandomEnemy1();
+        }
+        else
+        {
+            currentEnemy = enemySpawner.SpawnBoss();
         }
         
         // Set enemy stats

@@ -38,7 +38,7 @@ public class PlayerData : ScriptableObject
     
     public void Initialize()
     {
-        gold = 200;
+        gold = 400;
         level = 1;
         XP = 0;
         maxMana = 15;
@@ -89,6 +89,16 @@ public class PlayerData : ScriptableObject
     public bool IsSecondLevel()
     {
         if (GetMap().levelName == "Level2")
+        {
+            return true;
+        }
+
+        return false;
+    }
+    
+    public bool IsFirstLevel()
+    {
+        if (GetMap().levelName == "Level1")
         {
             return true;
         }

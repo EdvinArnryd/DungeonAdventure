@@ -3595,7 +3595,7 @@ MonoBehaviour:
   cost: 10
   costTxt: {fileID: 1759827445}
   player: {fileID: 11400000, guid: dc353e68cb3ffea478bad081283fb45a, type: 2}
-  redKeyButton: {fileID: 269251444}
+  redKeyButton: {fileID: 1731478972}
   playerGold: {fileID: 1431681359}
   playerHealthPots: {fileID: 574025771}
   playerManaPots: {fileID: 1208892667}
@@ -7290,7 +7290,7 @@ MonoBehaviour:
   cost: 15
   costTxt: {fileID: 1669772928}
   player: {fileID: 11400000, guid: dc353e68cb3ffea478bad081283fb45a, type: 2}
-  redKeyButton: {fileID: 279224502}
+  redKeyButton: {fileID: 1731478972}
   playerGold: {fileID: 1431681359}
   playerHealthPots: {fileID: 574025771}
   playerManaPots: {fileID: 1208892667}
