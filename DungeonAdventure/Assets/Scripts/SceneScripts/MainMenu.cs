@@ -7,7 +7,6 @@ public class MainMenu : MonoBehaviour
     public GameObject levelLoader;
     public void LoadScene()
     {
-        //SceneManager.LoadScene(sceneName);
         levelLoader.GetComponent<LoadScene>().LoadNextScene("CharacterCreation");
     }
 }
