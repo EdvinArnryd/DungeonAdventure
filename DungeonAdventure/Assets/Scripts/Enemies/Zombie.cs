@@ -13,5 +13,6 @@ public class Zombie : Enemy
         HP = maxHP;
         XP = 10;
         sprite = Resources.Load<Sprite>("Art/Enemies/ZombieDA");
+        enemySpawnSound = Resources.Load<AudioClip>("Audio/Zombie 1 - Short 1-01");
     }
 }

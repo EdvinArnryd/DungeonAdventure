@@ -12,6 +12,7 @@ public class Enemy
     public int maxHP;
     public int XP;
     public Sprite sprite;
+    public AudioClip enemySpawnSound;
     
     public void healEnemy(int addedHealth)
     {

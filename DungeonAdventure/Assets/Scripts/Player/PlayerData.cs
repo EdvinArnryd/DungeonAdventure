@@ -38,7 +38,7 @@ public class PlayerData : ScriptableObject
     
     public void Initialize()
     {
-        gold = 400;
+        gold = 0;
         level = 1;
         XP = 0;
         maxMana = 15;

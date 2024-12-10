@@ -12,6 +12,7 @@ public class Imp : Enemy
         HP = maxHP;
         XP = 5;
         sprite = Resources.Load<Sprite>("Art/Enemies/Imp");
+        enemySpawnSound = Resources.Load<AudioClip>("Audio/Monsters/Dinosaur_Shriek4");
     }
 
 }

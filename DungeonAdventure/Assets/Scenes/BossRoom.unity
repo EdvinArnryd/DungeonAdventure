@@ -778,8 +778,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 696.61, y: -394}
-  m_SizeDelta: {x: 526.785, y: 526.785}
+  m_AnchoredPosition: {x: 732, y: -446.42987}
+  m_SizeDelta: {x: 421.9252, y: 421.9252}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &220303220
 MonoBehaviour:
@@ -1699,7 +1699,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1205002404}
         m_TargetAssemblyTypeName: CombatManager, Assembly-CSharp
-        m_MethodName: ContinueWin
+        m_MethodName: ContinueDefeatBoss
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3173,8 +3173,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 789908518}
-  - {fileID: 220303219}
   - {fileID: 1926358866}
+  - {fileID: 220303219}
   - {fileID: 1765337525}
   - {fileID: 1877309077}
   - {fileID: 279933356}
@@ -5279,8 +5279,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -57, y: 61.513}
-  m_SizeDelta: {x: 508.655, y: 508.65}
+  m_AnchoredPosition: {x: 0, y: -4}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1926358867
 MonoBehaviour:
@@ -5302,7 +5302,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 82972cd32331e8c4c8882776ef155379, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f2ec256e87a596a49bfca0a06375aa16, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

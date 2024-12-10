@@ -328,6 +328,11 @@ public class GameManager : MonoBehaviour
 
     public void EnterBossRoom()
     {
+        BossLevel bossLevel = new BossLevel();
+        player.SetMap(bossLevel);
+        player.SetDungeonLevel(bossLevel.map);
+        player.col = 0;
+        player.row = 0;
         levelLoader.GetComponent<LoadScene>().LoadNextScene("BossRoom");
     }
 

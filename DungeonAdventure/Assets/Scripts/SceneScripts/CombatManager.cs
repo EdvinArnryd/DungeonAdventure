@@ -103,7 +103,7 @@ public class CombatManager : MonoBehaviour
 
         player.OnLevelUp += HandleLevelUp;
         
-        AudioManager.GetComponent<AudioManager>().PlayEnemyGrunt();
+        AudioManager.GetComponent<AudioManager>().PlayEnemySpawnSound(currentEnemy.enemySpawnSound);
     }
 
     private void OnDestroy()
@@ -432,6 +432,11 @@ public class CombatManager : MonoBehaviour
     public void ContinueWin()
     {
         levelLoader.GetComponent<LoadScene>().LoadNextScene("Game");
+    }
+    
+    public void ContinueDefeatBoss()
+    {
+        levelLoader.GetComponent<LoadScene>().LoadNextScene("WinScene");
     }
 
     public void ContinueLevelUp()

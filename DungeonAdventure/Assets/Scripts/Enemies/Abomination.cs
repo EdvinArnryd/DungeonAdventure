@@ -12,5 +12,6 @@ public class Abomination : Enemy
         HP = maxHP;
         XP = 25;
         sprite = Resources.Load<Sprite>("Art/Enemies/Abomination");
+        enemySpawnSound = Resources.Load<AudioClip>("Audio/Monsters/Monster_Roar10");
     }
 }

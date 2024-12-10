@@ -12,5 +12,6 @@ public class CursedKnight : Enemy
             HP = maxHP;
             XP = 18;
             sprite = Resources.Load<Sprite>("Art/Enemies/CursedKnight");
+            enemySpawnSound = Resources.Load<AudioClip>("Audio/Monsters/Monster_Roar13");
         }
 }

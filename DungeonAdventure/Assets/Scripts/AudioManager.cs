@@ -109,4 +109,9 @@ public class AudioManager : MonoBehaviour
     {
         audioSource.PlayOneShot(enemyGruntSound);
     }
+
+    public void PlayEnemySpawnSound(AudioClip audio)
+    {
+        audioSource.PlayOneShot(audio);
+    }
 }

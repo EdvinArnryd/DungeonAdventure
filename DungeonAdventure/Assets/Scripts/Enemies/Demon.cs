@@ -12,5 +12,6 @@ public class Demon : Enemy
         HP = maxHP;
         XP = 20;
         sprite = Resources.Load<Sprite>("Art/Enemies/DemonDA");
+        enemySpawnSound = Resources.Load<AudioClip>("Audio/Monsters/Monster_Growl1");
     }
 }
