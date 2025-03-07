@@ -400,7 +400,7 @@ public class CombatManager : MonoBehaviour
         else
         {
             lootName = loot.itemName;
-            player.inventory.Add(loot);
+            player.addItem(loot);
         }
             
         if (panelImage != null)

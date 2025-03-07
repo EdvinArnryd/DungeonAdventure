@@ -58,11 +58,14 @@ public class PlayerData : ScriptableObject
         col = 0;
         
         // Test data
-        // Sword sword = new Sword();
-        // Axe axe = new Axe();
-        // inventory.Add(sword);
-        // inventory.Add(axe);
-        // inventory.Add(sword);
+        Sword sword = new Sword();
+        Axe axe = new Axe();
+        inventory.Add(sword);
+        inventory.Add(axe);
+        inventory.Add(sword);
+        inventory.Add(sword);
+        inventory.Add(axe);
+        inventory.Add(sword);
 
     }
 
@@ -221,7 +224,7 @@ public class PlayerData : ScriptableObject
     
     public void addItem(Item item)
     {
-        if (inventory.Count < 5)
+        if (inventory.Count < 8)
         {
             inventory.Add(item);
         }
