@@ -66,6 +66,7 @@ public class PlayerData : ScriptableObject
         inventory.Add(sword);
         inventory.Add(axe);
         inventory.Add(sword);
+        inventory.Add(axe);
 
     }
 

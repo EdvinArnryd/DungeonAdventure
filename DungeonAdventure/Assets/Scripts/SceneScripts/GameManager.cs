@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI displayRoomTxt;
     public TextMeshProUGUI displayRoomDescTxt;
     private int randomValue;
+    
+    public ShopItems shopItems;
 
     [Header("LevelUI")] 
     public GameObject BG;
@@ -296,6 +298,7 @@ public class GameManager : MonoBehaviour
         ItemInfoPanel.SetActive(false);
         PopulateInventoryUI();
         UpdatePlayerStats();
+        shopItems.UpdateShopItems();
     }
 
     public void UpdatePlayerStats()
