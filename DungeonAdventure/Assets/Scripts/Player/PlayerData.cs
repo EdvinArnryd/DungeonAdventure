@@ -58,11 +58,11 @@ public class PlayerData : ScriptableObject
         col = 0;
         
         // Test data
-        Sword sword = new Sword();
-        Axe axe = new Axe();
-        inventory.Add(sword);
-        inventory.Add(axe);
-        inventory.Add(sword);
+        // Sword sword = new Sword();
+        // Axe axe = new Axe();
+        // inventory.Add(sword);
+        // inventory.Add(axe);
+        // inventory.Add(sword);
 
     }
 

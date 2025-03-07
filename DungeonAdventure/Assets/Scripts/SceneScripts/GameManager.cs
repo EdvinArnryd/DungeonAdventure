@@ -151,7 +151,7 @@ public class GameManager : MonoBehaviour
             RedDoorPanel.SetActive(false);
             ShopPanel.SetActive(false);
             sellButton.gameObject.SetActive(false);
-            //TriggerCombat();
+            TriggerCombat();
         }
     }
     
