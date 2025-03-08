@@ -10,7 +10,7 @@ public class Staff : Item
         goldValue = 11;
         itemName = "Staff";
         description = "A powerful magic staff.";
-        intelligence = 5;
+        intelligence = 7;
         strength = 2;
         sprite = Resources.Load<Sprite>("Art/Icons/StaffIcon");
     }

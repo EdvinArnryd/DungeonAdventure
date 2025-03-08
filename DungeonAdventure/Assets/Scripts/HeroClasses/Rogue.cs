@@ -7,8 +7,8 @@ public class Rogue : HeroClass
     // Start is called before the first frame update
     public Rogue()
     {
-        strength = 8;
-        intelligence = 8;
+        strength = 6;
+        intelligence = 6;
         className = "Rogue";
         description = "The sneaky rogue has a few tricks up his sleave to decieve anyone who crosses him.";
         strengthGrowth = 2;

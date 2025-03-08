@@ -6,12 +6,12 @@ public class Axe : Item
 {
     public Axe()
     {
-        dropChance = 55;
+        dropChance = 50;
         goldValue = 11;
         itemName = "Axe";
         description = "A strong axe.";
         intelligence = 0;
-        strength = 6;
+        strength = 4;
         sprite = Resources.Load<Sprite>("Art/Icons/AxeIcon");
     }
 }

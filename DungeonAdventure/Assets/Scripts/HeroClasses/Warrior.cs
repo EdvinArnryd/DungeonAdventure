@@ -7,8 +7,8 @@ public class Warrior : HeroClass
 {
     public Warrior()
     {
-        strength = 10;
-        intelligence = 5;
+        strength = 8;
+        intelligence = 4;
         className = "Warrior";
         description = "Fierce and powerful! The warrior wields heavy weaponry to take down his foes.";
         strengthGrowth = 3;
