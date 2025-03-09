@@ -6,7 +6,7 @@ public class Staff : Item
 {
     public Staff()
     {
-        dropChance = 40;
+        dropChance = 31;
         goldValue = 11;
         itemName = "Staff";
         description = "A powerful magic staff.";

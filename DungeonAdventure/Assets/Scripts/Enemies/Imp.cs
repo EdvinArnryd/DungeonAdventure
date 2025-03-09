@@ -7,8 +7,8 @@ public class Imp : Enemy
     public Imp()
     {
         type = "Imp";
-        DMG = 1;
-        maxHP = 6;
+        DMG = 2;
+        maxHP = 8;
         HP = maxHP;
         XP = 5;
         sprite = Resources.Load<Sprite>("Art/Enemies/Imp");

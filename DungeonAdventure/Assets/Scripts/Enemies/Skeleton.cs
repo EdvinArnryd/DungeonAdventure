@@ -10,7 +10,7 @@ public class Skeleton : Enemy
         DMG = 2;
         maxHP = 10;
         HP = maxHP;
-        XP = 8;
+        XP = 7;
         sprite = Resources.Load<Sprite>("Art/Enemies/SkeletonDA");
         enemySpawnSound = Resources.Load<AudioClip>("Audio/Monsters/Dinosaur_Shriek5");
     }
