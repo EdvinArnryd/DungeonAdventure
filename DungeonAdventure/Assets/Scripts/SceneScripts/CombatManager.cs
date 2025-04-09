@@ -144,7 +144,7 @@ public class CombatManager : MonoBehaviour
             if (currentEnemy.HP <= 0)
             {
                 yield return new WaitForSeconds(2f);
-                actionField.SetText("You killed the enemy!");
+                actionField.SetText("You killed the " + currentEnemy.type + "!");
                 yield return new WaitForSeconds(2f);
                 EnemyDied();
                 yield break;
@@ -161,7 +161,7 @@ public class CombatManager : MonoBehaviour
             if (currentEnemy.HP <= 0)
             {
                 yield return new WaitForSeconds(2f);
-                actionField.SetText("You killed the enemy!");
+                actionField.SetText("You killed the " + currentEnemy.type + "!");
                 yield return new WaitForSeconds(2f);
                 EnemyDied();
                 yield break;
@@ -199,7 +199,7 @@ public class CombatManager : MonoBehaviour
             if (currentEnemy.HP <= 0)
             {
                 yield return new WaitForSeconds(2f);
-                actionField.SetText("You killed the enemy!");
+                actionField.SetText("You killed the " + currentEnemy.type + "!");
                 yield return new WaitForSeconds(2f);
                 EnemyDied();
                 yield break;
@@ -217,19 +217,19 @@ public class CombatManager : MonoBehaviour
 
     private IEnumerator HealCoroutine()
     {
-        actionField.SetText("Player healed!");
+        actionField.SetText(player.GetName() + " healed!");
         yield return new WaitForSeconds(2f);
         if (player.useHealthPotion(5))
         {
             AudioManager.GetComponent<AudioManager>().PlayUsePotionSound();
             UpdateUI();
             healthPotions.SetText(player.GetHealthPotions().ToString());
-            actionField.SetText("Player used health potion!");
+            actionField.SetText(player.GetName() + " used health potion!");
             yield return new WaitForSeconds(2f);
         }
         else
         {
-            actionField.SetText("Player is out of health potions!");
+            actionField.SetText(player.GetName() + " is out of health potions!");
             yield return new WaitForSeconds(2f);
         }
         
@@ -244,20 +244,20 @@ public class CombatManager : MonoBehaviour
 
     private IEnumerator ManaCoroutine()
     {
-        actionField.SetText("Player used Mana potion!");
+        actionField.SetText(player.GetName() + " used Mana potion!");
         yield return new WaitForSeconds(2f);
 
         if (player.useManaPotion(6))
         {
             AudioManager.GetComponent<AudioManager>().PlayUsePotionSound();
             UpdateUI();
-            actionField.SetText("Player used mana potion!");
+            actionField.SetText(player.GetName() + " used mana potion!");
             manaPotions.SetText(player.GetManaPotions().ToString());
             yield return new WaitForSeconds(2f);
         }
         else
         {
-            actionField.SetText("Player is out of mana potions!");
+            actionField.SetText(player.GetName() + " is out of mana potions!");
             yield return new WaitForSeconds(2f);
         }
         
@@ -266,7 +266,7 @@ public class CombatManager : MonoBehaviour
 
     private void WaitingForPlayer()
     {
-        actionField.SetText("Waiting for player input...");
+        actionField.SetText("Waiting for " + player.GetName() + "'s input...");
         AttackButton.interactable = true;
         SpellButton.interactable = true;
         HealButton.interactable = true;
@@ -283,7 +283,7 @@ public class CombatManager : MonoBehaviour
 
     private void EnemyAction()
     {
-        actionField.SetText("Enemy's turn!");
+        actionField.SetText(currentEnemy.type + "'s turn!");
         int random = Random.Range(1, 7);
         if (random == 6)
         {
@@ -298,14 +298,14 @@ public class CombatManager : MonoBehaviour
     private IEnumerator EnemyAttackCoroutine()
     {
         yield return new WaitForSeconds(2f);
-        actionField.SetText("Enemy is going for an attack!");
+        actionField.SetText(currentEnemy.type + " is going for an attack!");
         yield return new WaitForSeconds(2f);
         int randomValue = Random.Range(1, 7);
         if (randomValue == 6)
         {
             AudioManager.GetComponent<AudioManager>().PlayEnemyAttackSound();
             // CRIT
-            actionField.SetText("Enemy got a lucky hit!");
+            actionField.SetText(currentEnemy.type + " got a lucky hit!");
             yield return new WaitForSeconds(2f);
             player.playerTakeDamage(currentEnemy.DMG * 2);
             UpdateUI();
@@ -323,7 +323,7 @@ public class CombatManager : MonoBehaviour
         {
             AudioManager.GetComponent<AudioManager>().PlayEnemyMissSound();
             // MISS
-            actionField.SetText("Enemy missed!");
+            actionField.SetText(currentEnemy.type + " missed!");
         }
         else
         {
@@ -352,7 +352,7 @@ public class CombatManager : MonoBehaviour
         currentEnemy.healEnemy(3);
         UpdateUI();
         AudioManager.GetComponent<AudioManager>().PlayEnemyHealSound();
-        actionField.SetText("Enemy healed themselves!");
+        actionField.SetText(currentEnemy.type + " healed themselves!");
         yield return new WaitForSeconds(2f);
         WaitingForPlayer();
     }
@@ -395,7 +395,7 @@ public class CombatManager : MonoBehaviour
         string lootName;
         if (loot == null)
         {
-            lootName = "Enemy dropped no loot.";
+            lootName = currentEnemy.type + " dropped no loot.";
         }
         else
         {

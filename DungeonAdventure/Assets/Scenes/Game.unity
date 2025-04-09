@@ -6658,6 +6658,7 @@ MonoBehaviour:
   displayRoomTxt: {fileID: 1095710005}
   displayRoomDescTxt: {fileID: 1621010383}
   shopItems: {fileID: 671908634}
+  shopItems2: {fileID: 629569210}
   BG: {fileID: 1132826843}
   north: {fileID: 1028542682}
   west: {fileID: 421298256}

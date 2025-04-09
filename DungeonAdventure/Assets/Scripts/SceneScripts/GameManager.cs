@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     private int randomValue;
     
     public ShopItems shopItems;
+    public ShopItems shopItems2;
 
     [Header("LevelUI")] 
     public GameObject BG;
@@ -153,7 +154,7 @@ public class GameManager : MonoBehaviour
             RedDoorPanel.SetActive(false);
             ShopPanel.SetActive(false);
             sellButton.gameObject.SetActive(false);
-            TriggerCombat();
+            //TriggerCombat();
         }
     }
     
@@ -299,6 +300,7 @@ public class GameManager : MonoBehaviour
         PopulateInventoryUI();
         UpdatePlayerStats();
         shopItems.UpdateShopItems();
+        shopItems2.UpdateShopItems();
     }
 
     public void UpdatePlayerStats()

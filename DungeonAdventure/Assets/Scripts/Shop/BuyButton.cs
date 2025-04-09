@@ -61,14 +61,12 @@ public class BuyButton : MonoBehaviour
             shopItems.GetComponent<ShopItems>().UpdateShopItems();
             CheckForPlayerRedKey();
         }
-        
     }
 
     public void CheckForPlayerRedKey()
     {
         if (player.GetSpecificToken(redKey))
         {
-            redKeyButton.interactable = false;
             redKeyButton.interactable = false;
             Debug.Log("Redkey checked");
         }
