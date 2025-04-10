@@ -76,7 +76,7 @@ public class CombatManager : MonoBehaviour
         // Player DungeonLevel logic
         if (player.IsSecondLevel())
         {
-            BG.sprite = Resources.Load<Sprite>("Art/BackGrounds/CombatBG2");
+            BG.sprite = Resources.Load<Sprite>("Art/BackGrounds/NewCombatBG2");
             currentEnemy = enemySpawner.GetRandomEnemy2();
         }
         else if(player.IsFirstLevel())

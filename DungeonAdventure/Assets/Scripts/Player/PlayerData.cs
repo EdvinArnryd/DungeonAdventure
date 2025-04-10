@@ -21,6 +21,9 @@ public class PlayerData : ScriptableObject
     private string playerName;
     private int points;
 
+    private int lvlUpStr;
+    private int lvlUpInt;
+
     public int col;
     public int row;
     private Room[,] dungeonLevel;
@@ -38,7 +41,7 @@ public class PlayerData : ScriptableObject
     
     public void Initialize()
     {
-        gold = 140;
+        gold = 0;
         level = 1;
         XP = 0;
         maxMana = 15;
@@ -52,21 +55,16 @@ public class PlayerData : ScriptableObject
         heroClass = null;
         playerName = "Player";
         strength = 0;
+        lvlUpStr = 0;
+        lvlUpInt = 0;
         intelligence = 0;
-        xpThreshold = 10;
+        xpThreshold = 1;
         row = 0;
         col = 0;
         
         // Test data
-        Sword sword = new Sword();
-        Axe axe = new Axe();
-        inventory.Add(sword);
-        inventory.Add(axe);
-        inventory.Add(sword);
-        inventory.Add(sword);
-        inventory.Add(axe);
-        inventory.Add(sword);
-        inventory.Add(axe);
+        // Sword sword = new Sword();
+        // inventory.Add(sword);
 
     }
 
@@ -202,7 +200,7 @@ public class PlayerData : ScriptableObject
             }
         }
 
-        strengthSum += heroClass.GetStrength();
+        strengthSum += heroClass.GetStrength() + lvlUpStr;
 
         strength = strengthSum;
     }
@@ -218,7 +216,7 @@ public class PlayerData : ScriptableObject
             } 
         }
         
-        intelligenceSum += heroClass.GetIntelligence();
+        intelligenceSum += heroClass.GetIntelligence() + lvlUpInt;
 
         intelligence = intelligenceSum;
     }
@@ -257,8 +255,8 @@ public class PlayerData : ScriptableObject
         level++;
         xpThreshold = level * 4 + 20 + xpThreshold;
 
-        strength += heroClass.strengthGrowth;
-        intelligence += heroClass.intelligenceGrowth;
+        lvlUpStr += heroClass.strengthGrowth;
+        lvlUpInt += heroClass.intelligenceGrowth;
         maxHP += heroClass.healthGrowth;
         maxMana += heroClass.manaGrowth;
 
